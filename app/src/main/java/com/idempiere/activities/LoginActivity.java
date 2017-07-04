@@ -63,7 +63,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 createLoginRequest();
                 if (authResponse == 1) {
+
                     Intent intent = new Intent(view.getContext(), MainMenu.class);
+                    intent.putExtra("Username", username.getText().toString());
                     view.getContext().startActivity(intent);
                 }
                 else if (authResponse == -1){

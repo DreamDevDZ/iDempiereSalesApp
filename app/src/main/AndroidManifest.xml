@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name="com.idempiere.activities.MainMenu"
-            android:label="@string/action_sign_in">
+            android:label="Main Menu">
         </activity>
 
 

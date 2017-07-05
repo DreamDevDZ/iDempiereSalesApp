@@ -80,7 +80,7 @@
             android:layout_marginRight="100dp"
             android:layout_marginTop="230dp"
             android:background="@drawable/border"
-            android:text="TextView"
+            android:text="URGENT - Mackays of Halkirk sales have dropped 73% on Soft Drinks"
             android:textColor="@android:color/background_dark" />
 
         <TextView
@@ -91,7 +91,7 @@
             android:layout_marginRight="100dp"
             android:layout_marginTop="170dp"
             android:background="@drawable/border"
-            android:text="TextView"
+            android:text="Sales in total are up 2.3% on last month"
             android:textColor="@android:color/background_dark" />
 
         <TextView
@@ -102,7 +102,7 @@
             android:layout_marginRight="100dp"
             android:layout_marginTop="110dp"
             android:background="@drawable/border"
-            android:text="TextView"
+            android:text="One Stop Shop sales are down 9.7% over the last 3 months"
             android:textColor="@android:color/background_dark" />
 
         <TextView
@@ -113,7 +113,7 @@
             android:layout_marginRight="100dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/border"
-            android:text="Oykel Bridge have stopped AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ordering Soft Drinks"
+            android:text="Oykel Bridge have stopped ordering Soft Drinks"
             android:textColor="@android:color/background_dark" />
 
         <Button

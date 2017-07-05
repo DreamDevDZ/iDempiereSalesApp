@@ -127,9 +127,7 @@ public class X_Action implements I_X_Action {
     }
 
     @Override
-    public void setDuration(BigDecimal Duration) {
-
-    }
+    public void setDuration(BigDecimal Duration) { }
 
     @Override
     public BigDecimal getDuration() {
@@ -235,8 +233,6 @@ public class X_Action implements I_X_Action {
     public int getX_Action_ID() {
         return X_Action_ID;
     }
-
-
 
     /** TODO - Need to find out relevance of UU column and decide if needed **/
     @Override

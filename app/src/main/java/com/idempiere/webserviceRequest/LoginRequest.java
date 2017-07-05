@@ -55,6 +55,7 @@ public class LoginRequest extends AsyncTask<Void, Void, Integer> {
             Log.v("ErrorLogin",response.Error);
             return -1;
         }
+
         return 1;
     }
 

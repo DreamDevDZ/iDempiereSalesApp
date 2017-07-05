@@ -1,5 +1,8 @@
 package com.idempiere.listeners;
 
+import android.content.Intent;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.iDempiere.R;
@@ -12,6 +15,11 @@ public class MainMenuClickListener extends OnClickListeners {
 
     /** All clicks for main_Menu activity **/
     public void handleClicks(View v){
+        handleButtonClicks(v);
+    }
+
+
+    private void handleButtonClicks(View v){
         if (v.getId() == R.id.actionScheduleBut) {
 
         }
@@ -28,6 +36,5 @@ public class MainMenuClickListener extends OnClickListeners {
 
         }
     }
-
 
 }

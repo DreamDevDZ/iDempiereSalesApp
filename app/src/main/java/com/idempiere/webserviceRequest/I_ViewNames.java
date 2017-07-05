@@ -12,4 +12,6 @@ public class I_ViewNames {
     static final String ALL_ORDERS_FOR_BP = "SMA_AllOrdersForBP_v";
     static final String ALL_INVOICES_FOR_BP = "SMA_AllInvoicesForBP_v";
     static final String ALL_REQUESTS_FOR_BP = "SMA_AllRequestForBP_v";
+    static final String ALL_CURRENT_USER_INFO = "SMA_LoggedInUserInfo_v";
+    static final String ALL_DAILY_NOTIFICATIONS_FORUSER = "SMA_DailyNotifications_v";
 }

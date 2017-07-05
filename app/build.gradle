@@ -25,7 +25,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.github.npanigrahy:Custom-Calendar-View:v1.0'
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
     compile files('libs/ksoap2-android-assembly-3.6.2-jar-with-dependencies.jar')
+
 }

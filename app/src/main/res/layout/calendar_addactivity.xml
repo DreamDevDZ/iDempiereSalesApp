@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="807dp"
+        android:layout_height="1139dp">
+
+        <EditText
+            android:id="@+id/C_BPartner_ID"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Business Partner"
+            android:textAlignment="center"
+            />
+
+        <EditText
+            android:id="@+id/Description"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Description"
+            android:layout_marginTop="50dp"
+            android:textAlignment="center"
+            />
+
+        <Spinner
+            android:id="@+id/ContactActivityType"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Activity Type"
+            android:layout_marginTop="100dp"
+            android:textAlignment="center"
+            />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</LinearLayout>

@@ -1,17 +1,18 @@
 package com.idempiere.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.iDempiere.R;
-import com.idempiere.database.Database;
+import com.idempiere.calendar.MenuCalendarOptionPopup;
 import com.idempiere.listeners.MainMenuClickListener;
 import com.idempiere.listeners.OnClickListeners;
+import com.imanoweb.calendarview.CalendarListener;
+import com.imanoweb.calendarview.CustomCalendarView;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -31,6 +32,7 @@ public class MainMenu extends AppCompatActivity {
     private Button customerInfoBut;
     private Button routePlanBut;
     private Button requestBut;
+    private CustomCalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class MainMenu extends AppCompatActivity {
         String userName = getIntent().getStringExtra("Username");
         createGreetingMessage(userName);
         addActionListeners();
+        addCalendarClickListeners();
     }
 
 
@@ -81,6 +84,33 @@ public class MainMenu extends AppCompatActivity {
         requestBut = (Button)findViewById(R.id.requestBut);
         requestBut.setOnClickListener(mainMenuClick);
     }
+
+
+    private void addCalendarClickListeners() {
+        calendarView = (CustomCalendarView)findViewById(R.id.calendar_view);
+        calendarView.setCalendarListener(new CalendarListener() {
+            @Override
+            public void onDateSelected (Date date){
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                Log.v("OnDateChange", "Date change logged");
+               // Toast.makeText(calendarView.getContext(), df.format(date), Toast.LENGTH_SHORT).show();
+                MenuCalendarOptionPopup popup = new MenuCalendarOptionPopup(calendarView.getContext());
+                popup.initialisePopup();
+            }
+
+            @Override
+            public void onMonthChanged(Date date) {
+                SimpleDateFormat df = new SimpleDateFormat("MM-yyyy");
+                Toast.makeText(calendarView.getContext(), df.format(date), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+
+
+
 
 }
 

@@ -94,7 +94,7 @@ public class MainMenu extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
                 Log.v("OnDateChange", "Date change logged");
                // Toast.makeText(calendarView.getContext(), df.format(date), Toast.LENGTH_SHORT).show();
-                MenuCalendarOptionPopup popup = new MenuCalendarOptionPopup(calendarView.getContext());
+                MenuCalendarOptionPopup popup = new MenuCalendarOptionPopup(calendarView.getContext(), MainMenu.this);
                 popup.initialisePopup();
             }
 

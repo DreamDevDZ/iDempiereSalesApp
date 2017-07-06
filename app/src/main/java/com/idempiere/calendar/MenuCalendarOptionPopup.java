@@ -3,6 +3,7 @@ package com.idempiere.calendar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.iDempiere.R;
@@ -17,9 +18,11 @@ import com.iDempiere.R;
 public class MenuCalendarOptionPopup {
 
     Context mainMenu;
+    AppCompatActivity mainMenuAct;
 
-    public MenuCalendarOptionPopup(Context mainMenu){
+    public MenuCalendarOptionPopup(Context mainMenu, AppCompatActivity mainMenuAct ){
         this.mainMenu = mainMenu;
+        this.mainMenuAct = mainMenuAct;
     }
 
 
@@ -30,7 +33,11 @@ public class MenuCalendarOptionPopup {
                 .setTitle("Calendar Popup");
         builder.setPositiveButton("Add Activity", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
+
+              AddCalendarActionPopup addActionPopup = new AddCalendarActionPopup();
+                addActionPopup.setActivity(mainMenuAct);
+                addActionPopup.setContext(mainMenu);
+                addActionPopup.initialisePopup();
             }
         });
         builder.setNeutralButton("View Schedule", new DialogInterface.OnClickListener() {
@@ -45,7 +52,7 @@ public class MenuCalendarOptionPopup {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
-        dialog.getWindow().setLayout(1200, 800);
+        dialog.getWindow().setLayout(1000, 400);
     }
 
 

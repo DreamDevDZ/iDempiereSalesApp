@@ -1,24 +1,23 @@
 package com.idempiere.activities;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iDempiere.R;
+import com.idempiere.database.DBQuery;
 import com.idempiere.database.Database;
-import com.idempiere.error.SalesAppException;
+import com.idempiere.model.I_X_Action;
 import com.idempiere.webserviceRequest.LoginRequest;
-import com.idempiere.webserviceRequest.TestRequest;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
-
-import static java.security.AccessController.getContext;
 
 /**
  * @author Ben Parker
@@ -32,7 +31,6 @@ import static java.security.AccessController.getContext;
  *      ELSE invalid login
  */
 public class LoginActivity extends AppCompatActivity {
-    Database db;
     public EditText username;
     public EditText password;
     public Button logIn;
@@ -50,10 +48,14 @@ public class LoginActivity extends AppCompatActivity {
         createLoginButtonClickListener();
 
         /** Create a new database instance if one doesn't already exist **/
-        db = new Database(this);
+        Database.createOrUpgradeDatabase(this);
 
-        // TestRequest tr = new TestRequest();
-        //tr.execute();
+        DBQuery query = new DBQuery("SELECT * FROM X_Action");
+        Cursor response = query.executeQuery();
+        ArrayList<String> results = new ArrayList<>();
+        while (response.moveToNext()){
+            results.add(response.getString(response.getColumnIndex(I_X_Action.COLUMNNAME_AD_Org_ID)));
+        }
     }
 
 
@@ -63,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 createLoginRequest();
                 if (authResponse == 1) {
-
                     Intent intent = new Intent(view.getContext(), MainMenu.class);
                     intent.putExtra("Username", username.getText().toString());
                     view.getContext().startActivity(intent);

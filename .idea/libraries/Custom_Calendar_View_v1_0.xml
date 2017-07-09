@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Custom-Calendar-View-v1.0">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/5c8cc9583e2e23f682f783e3a5f8a6e7bbbe31b6/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/5c8cc9583e2e23f682f783e3a5f8a6e7bbbe31b6/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/702f9f64545e94bcc82f35e652e692a4eb5ffdfe/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/702f9f64545e94bcc82f35e652e692a4eb5ffdfe/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

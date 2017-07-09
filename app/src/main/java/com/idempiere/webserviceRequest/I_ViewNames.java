@@ -5,7 +5,7 @@ package com.idempiere.webserviceRequest;
  * All view names held on the system to provide the app with download data
  */
 
-public class I_ViewNames {
+public interface I_ViewNames {
     static final String TODAYS_ACTIONS = "SMA_TodaysActions_v";
     static final String ALL_ACTIONS = "SMA_AllActions_v";
     static final String TODAYS_ROUTE_PLAN = "SMA_TodaysRoutePlan_v";

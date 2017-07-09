@@ -1,4 +1,4 @@
-package com.idempiere.webserviceRequest;
+package com.idempiere.webserviceresponse;
 
 import android.util.Log;
 

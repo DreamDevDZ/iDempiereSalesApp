@@ -12,8 +12,10 @@ import java.sql.Timestamp;
  */
 public interface I_X_Action {
         static final String Table_Name = "X_Action";
-        static final String AD_Client_ID = "AD_Client_ID";
+        static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
         int getAD_Client_ID();
+
+
 
         static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
         void setAD_Org_ID (int AD_Org_ID);
@@ -103,8 +105,21 @@ public interface I_X_Action {
         void setX_Action_UU (String X_Action_UU);
         String getX_Action_UU();
 
-        static String tableCreationSQL = "CREATE TABLE " + Table_Name + " ( " + COLUMNNAME_X_Action_ID + " "
-                + " INTEGER PRIMARY KEY, " + COLUMNNAME_AD_Org_ID + " INTEGER, " + COLUMNNAME_AD_User_ID + " INTEGER ); " ;
+        /** TODO - Update tableCreationSQL to include all columns **/
+        static String tableCreationSQL = "CREATE TABLE " + Table_Name + " ( "
+                + COLUMNNAME_X_Action_ID + " INTEGER PRIMARY KEY, "
+                + COLUMNNAME_AD_Client_ID + " INTEGER, "
+                + COLUMNNAME_AD_Org_ID + " INTEGER, "
+                + COLUMNNAME_AD_User_ID + " INTEGER, "
+                + COLUMNNAME_C_BPartner_ID + " INTEGER, "
+                + COLUMNNAME_Description + " VARCHAR(500), "
+                + COLUMNNAME_StartDate + " TIMESTAMP, "
+                + COLUMNNAME_Created + " TIMESTAMP, "
+                + COLUMNNAME_CreatedBy + " INTEGER, "
+                + COLUMNNAME_Updated + " TIMESTAMP, "
+                + COLUMNNAME_UpdatedBy + " INTEGER, "
+                + COLUMNNAME_IsActive + " BOOLEAN "
+                + "); " ;
 
         static String tableDeletionSQL = "DROP TABLE IF EXISTS " + Table_Name;
 }

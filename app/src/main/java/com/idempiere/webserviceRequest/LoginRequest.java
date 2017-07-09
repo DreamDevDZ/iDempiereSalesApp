@@ -42,7 +42,6 @@ public class LoginRequest extends AsyncTask<Void, Void, Integer> {
         X_ModelCRUD modelCrud = createModelCRUD();
         wsRequest = new WebServiceRequest(modelCrud, I_WebServiceRequest.READ_DATA);
         wsRequest.setLoginRequest(loginRequest);
-
     }
 
 
@@ -55,7 +54,6 @@ public class LoginRequest extends AsyncTask<Void, Void, Integer> {
             Log.v("ErrorLogin",response.Error);
             return -1;
         }
-
         return 1;
     }
 

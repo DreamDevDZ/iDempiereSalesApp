@@ -1,5 +1,10 @@
 package com.idempiere.model;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.idempiere.database.DBQuery;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -14,7 +19,7 @@ public class X_Action implements I_X_Action {
     private int AD_Org_ID;
     private int C_BPartner_ID;
     private int X_Action_ID;
-    private boolean IsActive;
+    private boolean isActive;
     private Timestamp created;
     private int createdBy;
     private boolean isComplete;
@@ -146,12 +151,12 @@ public class X_Action implements I_X_Action {
 
     @Override
     public void setIsActive(boolean IsActive) {
-        this.IsActive = IsActive;
+        this.isActive = IsActive;
     }
 
     @Override
     public boolean isActive() {
-        return IsActive;
+        return isActive;
     }
 
     @Override
@@ -165,9 +170,7 @@ public class X_Action implements I_X_Action {
     }
 
     @Override
-    public void setISObjectiveSuccess(boolean ISObjectiveSuccess) {
-
-    }
+    public void setISObjectiveSuccess(boolean ISObjectiveSuccess) { }
 
     @Override
     public boolean isObjectiveSuccess() {
@@ -234,14 +237,30 @@ public class X_Action implements I_X_Action {
         return X_Action_ID;
     }
 
-    /** TODO - Need to find out relevance of UU column and decide if needed **/
     @Override
-    public void setX_Action_UU(String X_Action_UU) {
-
-    }
+    public void setX_Action_UU(String X_Action_UU) { }
 
     @Override
     public String getX_Action_UU() {
         return null;
     }
+
+    /** Insert a record into the local database table **/
+    public boolean save(){
+        ContentValues contentValues = new ContentValues();
+            contentValues.put(COLUMNNAME_AD_Client_ID, AD_Client_ID);
+            contentValues.put(COLUMNNAME_AD_Org_ID, AD_Org_ID);
+            contentValues.put(COLUMNNAME_AD_User_ID, AD_User_ID);
+            contentValues.put(COLUMNNAME_Created, String.valueOf(created));
+            contentValues.put(COLUMNNAME_CreatedBy, createdBy);
+            contentValues.put(COLUMNNAME_Updated, String.valueOf(updated));
+            contentValues.put(COLUMNNAME_UpdatedBy, updatedBy);
+            contentValues.put(COLUMNNAME_IsActive, isActive);
+            contentValues.put(COLUMNNAME_UpdatedBy, updatedBy);
+        DBQuery.insertValues(I_X_Action.Table_Name, contentValues);
+        return true;
+    }
+
+
+
 }

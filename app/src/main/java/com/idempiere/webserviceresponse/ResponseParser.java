@@ -22,11 +22,10 @@ public class ResponseParser {
 
     public ResponseParser(AttributeContainer response){
         getResponseType(response);
-        validateResponseData();
     }
 
 
-    public void getResponseType(AttributeContainer response ){
+    public void getResponseType(AttributeContainer response){
         if (response instanceof X_WindowTabData){
             windowTabData = (X_WindowTabData) response;
         }
@@ -35,14 +34,6 @@ public class ResponseParser {
         }
     }
 
-    public void validateResponseData(){
-        if (windowTabData.Error != null) {
-            Log.v("Error", windowTabData.Error);
-            throw new SalesAppException("Error : " + windowTabData.Error);
-        }
-        if (windowTabData.DataSet == null) {
-            throw new SalesAppException("No Data returned from query ");
-        }
-    }
+
 
 }

@@ -57,4 +57,11 @@ public class DBQuery {
         }
         return database.getUpdateableDatabase().insert(tableName, null, values);
     }
+
+    public static long deleteRecords(String tableName, String whereClause){
+        if (database == null){
+            database = Database.getInstance();
+        }
+        return database.getUpdateableDatabase().delete(tableName, whereClause, null);
+    }
 }

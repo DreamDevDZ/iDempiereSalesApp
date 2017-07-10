@@ -28,14 +28,14 @@ public class WebServiceRequest implements I_WebServiceRequest{
     protected X_ModelADServiceSoapBinding soapBinding;
     protected String type;
     protected ArrayList<String> allTypes = new ArrayList<>();
-    protected static String BASE_URL = "http://10.0.2.2:8080/ADInterface/services/ModelADService/";
+    protected String BASE_URL = "http://10.0.2.2:8080/ADInterface/services/ModelADService/";
 
     /**
      * Complex constructor which takes all data in and is ready to send request
      * by calling the appropriate method for that type
      **/
 
-    public WebServiceRequest(){ }
+
 
     public WebServiceRequest(X_ModelCRUD modelCRUD, String type) {
         createArrayOfTypes();

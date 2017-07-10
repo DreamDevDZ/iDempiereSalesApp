@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.idempiere.model.X_Action;
+import com.idempiere.model.X_Login_Detail;
 
 /**
  * Created by ben on 21/05/17.
@@ -18,12 +19,13 @@ public class DatabaseCreator extends SQLiteOpenHelper  {
 
 
     public DatabaseCreator(Context context){
-        super(context, SQLITE_DATABASE_NAME, null, 3);
+        super(context, SQLITE_DATABASE_NAME, null, 5);
     }
 
     public static StringBuffer generateDBCreationQuery() {
         StringBuffer createDB = new StringBuffer();
-        createDB.append(X_Action.tableCreationSQL);
+        // createDB.append(X_Action.tableCreationSQL);
+        createDB.append(X_Login_Detail.tableCreationSQL);
         return createDB;
     }
 

@@ -39,6 +39,8 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
         greeting = (TextView)findViewById(R.id.greetingText);
+        greeting.setText("Good Morning");
+
         String userName = getIntent().getStringExtra("Username");
         createGreetingMessage(userName);
         addActionListeners();

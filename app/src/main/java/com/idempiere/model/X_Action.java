@@ -12,7 +12,7 @@ import java.sql.Timestamp;
  * Created by ben on 21/05/17.
  */
 
-public class X_Action implements I_X_Action {
+public class X_Action extends DBObject implements I_X_Action {
 
     private int AD_Client_ID;
     private int AD_UserMail_ID;
@@ -246,19 +246,10 @@ public class X_Action implements I_X_Action {
     }
 
     /** Insert a record into the local database table **/
-    public boolean save(){
-        ContentValues contentValues = new ContentValues();
-            contentValues.put(COLUMNNAME_AD_Client_ID, AD_Client_ID);
-            contentValues.put(COLUMNNAME_AD_Org_ID, AD_Org_ID);
-            contentValues.put(COLUMNNAME_AD_User_ID, AD_User_ID);
-            contentValues.put(COLUMNNAME_Created, String.valueOf(created));
-            contentValues.put(COLUMNNAME_CreatedBy, createdBy);
-            contentValues.put(COLUMNNAME_Updated, String.valueOf(updated));
-            contentValues.put(COLUMNNAME_UpdatedBy, updatedBy);
-            contentValues.put(COLUMNNAME_IsActive, isActive);
-            contentValues.put(COLUMNNAME_UpdatedBy, updatedBy);
-        DBQuery.insertValues(I_X_Action.Table_Name, contentValues);
-        return true;
+    @Override
+    public long save() throws Exception{
+        ContentValues contentValues = getMandatoryContentValues();
+        return DBQuery.insertValues(I_X_Action.Table_Name, contentValues);
     }
 
 

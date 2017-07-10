@@ -1,14 +1,29 @@
 package com.idempiere.model;
 
+import android.content.ContentValues;
+import android.util.Log;
+
+import com.idempiere.database.DBQuery;
+import com.idempiere.utils.WSRUtils;
+import com.idempiere.webserviceRequest.UserDetailsRequest;
+
 /**
  * Created by ben on 08/07/17.
  */
 
-public class X_Login_Detail {
+public class X_Login_Detail extends DBObject implements I_X_LoginDetail{
+
+    /** On save of this class query web-service and find out AD_user_ID **/
+
     private String username;
     private String password;
     private int ad_User_ID;
     private int c_Bpartner_ID;
+    private String isActiveUser;
+
+    public String isActiveUser() { return isActiveUser; }
+
+    public void setActiveUser(String activeUser) { isActiveUser = activeUser; }
 
     public String getPassword() {
         return password;
@@ -42,5 +57,25 @@ public class X_Login_Detail {
         this.username = username;
     }
 
-
+    /** On save of this record we first fetch the users AD_User_ID and C_BPartner_ID from the Database **/
+    @Override
+    public long save() throws Exception {
+        if (ad_User_ID == 0 || c_Bpartner_ID == 0){
+            X_Login_Detail detail = new UserDetailsRequest(username, password).execute().get();
+            if (detail.getAd_User_ID() != 0){
+                ad_User_ID = detail.getAd_User_ID();
+            }
+            if (detail.getC_Bpartner_ID() != 0){
+                c_Bpartner_ID = detail.getC_Bpartner_ID();
+            }
+        }
+        ContentValues values = new ContentValues();
+        values.put(I_X_LoginDetail.ColumnName_AD_User_ID, ad_User_ID);
+        values.put(I_X_LoginDetail.ColumnName_C_BPartner_ID, c_Bpartner_ID);
+        values.put(I_X_LoginDetail.ColumnName_Username, username);
+        values.put(I_X_LoginDetail.ColumnName_Password, password);
+        values.put(I_X_LoginDetail.ColumnName_IsActiveUser, isActiveUser);
+        Log.v("InsertingValues", "SavingLoginDetails");
+        return DBQuery.insertValues(I_X_LoginDetail.Table_Name, values);
+    }
 }

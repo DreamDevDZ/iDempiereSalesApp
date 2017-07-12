@@ -19,12 +19,11 @@ import com.idempiere.webservice.X_RunProcessResponse;
 public class RunProcessRequest extends AsyncTask<Void, Void, Void> {
 
     private Context context;
-    private PowerManager.WakeLock mWakeLock;
 
     public RunProcessRequest(Context context) {
         this.context = context;
     }
-
+    private X_DataField datafield;
     WebServiceRequest wsr;
     private X_ModelRunProcess modelRunP;
     X_ADLoginRequest loginRequest;
@@ -41,6 +40,12 @@ public class RunProcessRequest extends AsyncTask<Void, Void, Void> {
     private void runProcessRequest() {
         modelRunP = new X_ModelRunProcess();
         modelRunP.setServiceType("SMAColumnGenerator");
+        X_DataField dataField = new X_DataField();
+        dataField.setColumn("AD_Process_ID");
+        dataField.setVal("1000173");
+        X_DataRow row = new X_DataRow();
+        row.add(dataField);
+        modelRunP.setParamValues(row);
         loginRequest = WSRUtils.createLoginRequest(user, pass);
         wsr = new WebServiceRequest(modelRunP, I_WebServiceRequest.RUN_PROCESS, loginRequest);
         X_RunProcessResponse response = wsr.runProcess();
@@ -61,39 +66,6 @@ public class RunProcessRequest extends AsyncTask<Void, Void, Void> {
             }
             Log.v("ProcessSummary", respons);
         }
-        if (response.LogInfo != null){
-            Log.v("WhichHitResponse", "LogInfo");
-            String respons = null;
-            byte[] resp = Base64.decode(response.LogInfo.getBytes(), 0);
-            try {
-                respons = new String(resp, "UTF-8");
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
-            Log.v("ProcessLogInfo", respons);
-        }
-
-        if (response.Data != null){
-            Log.v("WhichHitResponse", "Data");
-            String respons = null;
-            byte[] resp = Base64.decode(response.Data.getBytes(), 0);
-            try {
-                respons = new String(resp, "UTF-8");
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
-            Log.v("ProcessData", respons);
-        }
-
-        if (response.ADLoginResponse != null){
-            Log.v("WhichHitResponse", "ADLoginResponse");
-            String respons = response.ADLoginResponse.langs;
-            Log.v("ADLoginResponse", respons);
-        }
-
-
 
     }
 

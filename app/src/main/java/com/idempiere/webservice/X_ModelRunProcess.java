@@ -58,18 +58,18 @@ public class X_ModelRunProcess extends AttributeContainer implements KvmSerializ
     }
 
     public X_DataRow getDataRow() {
-        return DataRow;
+        return ParamValues;
     }
 
-    public void setDataRow(X_DataRow dataRow) {
-        DataRow = dataRow;
+    public void setParamValues(X_DataRow dataRow) {
+        ParamValues = dataRow;
     }
 
     public Integer AD_Process_ID;
 
     public Integer AD_Menu_ID;
 
-    public X_DataRow DataRow;
+    public X_DataRow ParamValues;
 
     public X_ModelRunProcess()
     {
@@ -149,6 +149,15 @@ public class X_ModelRunProcess extends AttributeContainer implements KvmSerializ
                     }
                     continue;
                 }
+                if (info.name.equals("ParamValues"))
+                {
+                    if(obj!=null)
+                    {
+                        Object j = obj;
+                        this.ParamValues = new X_DataRow(j,__envelope);
+                    }
+                    continue;
+                }
             }
         }
     }
@@ -174,13 +183,17 @@ public class X_ModelRunProcess extends AttributeContainer implements KvmSerializ
         if(propertyIndex==3){
             return serviceType;
         }
+        if(propertyIndex==4)
+        {
+            return this.ParamValues!=null?this.ParamValues:SoapPrimitive.NullSkip;
+        }
         return null;
     }
 
 
     @Override
     public int getPropertyCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -208,6 +221,13 @@ public class X_ModelRunProcess extends AttributeContainer implements KvmSerializ
         {
             info.type = PropertyInfo.STRING_CLASS;
             info.name = "serviceType";
+            info.namespace= "http://idempiere.org/ADInterface/1_0";
+        }
+        if(propertyIndex==4)
+        {
+            info.type = PropertyInfo.VECTOR_CLASS;
+            info.name = "ParamValues";
+            //info.name = "DataRow";
             info.namespace= "http://idempiere.org/ADInterface/1_0";
         }
     }

@@ -38,19 +38,13 @@ public class WSRUtils {
     public static X_ModelCRUD createModelCRUD(String serviceType, String tableName, X_Enums.ModelCRUD_Action action){
         modelCRUD = new X_ModelCRUD();
         modelCRUD.setServiceType(serviceType);
-        modelCRUD.setTableName(tableName);
-        modelCRUD.setAction(action);
+        if (tableName != null)
+             modelCRUD.setTableName(tableName);
+        if (action != null)
+            modelCRUD.setAction(action);
+
         return modelCRUD;
     }
-
-
-    public static void addParameters(X_DataRow params){
-        parameters = params;
-        if (modelCRUD != null){
-            modelCRUD.setDataRow(parameters);
-        }
-    }
-
 
     public static X_ADLoginRequest createLoginRequest(String user, String pass){
         if (user == null || pass == null) {

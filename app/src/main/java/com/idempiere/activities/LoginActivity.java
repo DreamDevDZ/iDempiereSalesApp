@@ -14,6 +14,7 @@ import com.iDempiere.R;
 import com.idempiere.database.DBQuery;
 import com.idempiere.database.Database;
 import com.idempiere.model.I_X_Action;
+import com.idempiere.model.I_X_LoginDetail;
 import com.idempiere.model.X_Login_Detail;
 import com.idempiere.webserviceRequest.LoginRequest;
 
@@ -54,14 +55,6 @@ public class LoginActivity extends AppCompatActivity {
         /** Create a new database instance if one doesn't already exist **/
         Database.createOrUpgradeDatabase(this);
 
-        /**
-        DBQuery query = new DBQuery("SELECT * FROM X_Action");
-        Cursor response = query.executeQuery();
-        ArrayList<String> results = new ArrayList<>();
-        while (response.moveToNext()){
-            results.add(response.getString(response.getColumnIndex(I_X_Action.COLUMNNAME_AD_Org_ID)));
-        }
-         **/
     }
 
 
@@ -72,13 +65,17 @@ public class LoginActivity extends AppCompatActivity {
                 createLoginRequest();
                 /** User has been authenticated successfully **/
                 if (authResponse == 1) {
-
-
                     createLoginDetailsRecord();
+                    DBQuery query = new DBQuery("SELECT * FROM X_Login_Detail");
+                    Cursor response = query.executeQuery();
+                    while (response.moveToNext()){
+                        Log.v("response", response.getString(response.getColumnIndex(I_X_LoginDetail.ColumnName_C_BPartner_ID)));
+                    }
 
                     Log.v("Loadingmaimenuintent", "MainMenu");
                     Intent intent = new Intent(view.getContext(), MainMenu.class);
                     intent.putExtra("Username", username.getText().toString());
+                    intent.putExtra("Password", password.getText().toString());
                     view.getContext().startActivity(intent);
                 }
                 else if (authResponse == -1){
@@ -95,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
             X_Login_Detail loginDetail = new X_Login_Detail();
             loginDetail.setUsername(username.getText().toString());
             loginDetail.setPassword(password.getText().toString());
+            loginDetail.setActiveUser("Y");
             return loginDetail.save();
         }
         catch (Exception e){

@@ -31,7 +31,7 @@ public class Database {
     public static void createOrUpgradeDatabase(Context context){
         Log.v("DatabaseCreation", "createDatabase method called");
         databaseCreator = new DatabaseCreator(context);
-        Log.v("DatabaseCreation", "Database created without errors");
+        getUpdateableDatabase().close();
     }
 
     public static SQLiteDatabase getQueryableDatabase(){
@@ -39,6 +39,6 @@ public class Database {
     }
 
     public static SQLiteDatabase getUpdateableDatabase(){
-        return databaseCreator.getReadableDatabase();
+        return databaseCreator.getWritableDatabase();
     }
 }

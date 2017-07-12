@@ -11,6 +11,9 @@ import java.sql.Timestamp;
  * Specifies the column names and getter/setter methods
  */
 public interface I_X_Action {
+
+        static final int SMA_App_Table_ID = 1000000;
+
         static final String Table_Name = "X_Action";
         static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
         int getAD_Client_ID();
@@ -112,14 +115,14 @@ public interface I_X_Action {
                 + COLUMNNAME_AD_Org_ID + " INTEGER, "
                 + COLUMNNAME_AD_User_ID + " INTEGER, "
                 + COLUMNNAME_C_BPartner_ID + " INTEGER, "
-                + COLUMNNAME_Description + " VARCHAR(500), "
-                + COLUMNNAME_StartDate + " TIMESTAMP, "
-                + COLUMNNAME_Created + " TIMESTAMP, "
+                + COLUMNNAME_Description + " TEXT, "
+                + COLUMNNAME_StartDate + " TEXT, "
+                + COLUMNNAME_Created + " TEXT, "
                 + COLUMNNAME_CreatedBy + " INTEGER, "
-                + COLUMNNAME_Updated + " TIMESTAMP, "
+                + COLUMNNAME_Updated + " TEXT, "
                 + COLUMNNAME_UpdatedBy + " INTEGER, "
-                + COLUMNNAME_IsActive + " BOOLEAN "
+                + COLUMNNAME_IsActive + " INTEGER "
                 + "); " ;
 
-        static String tableDeletionSQL = "DROP TABLE IF EXISTS " + Table_Name;
+        static String tableDeletionSQL = "DROP TABLE IF EXISTS " + Table_Name + "; ";
 }

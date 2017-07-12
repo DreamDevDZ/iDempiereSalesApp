@@ -12,13 +12,17 @@ public interface I_X_LoginDetail {
     static final String ColumnName_AD_User_ID = "AD_User_ID";
     static final String ColumnName_C_BPartner_ID = "C_BPartner_ID";
     static final String ColumnName_IsActiveUser = "IsActiveUser";
+    static final String ColumnName_X_LoginDetail_ID = "X_LoginDetail_ID";
 
     /** TODO - Store password as hashed password **/
     static String tableCreationSQL = "CREATE TABLE " + Table_Name + " ( "
+            + ColumnName_X_LoginDetail_ID + " BIGSERIAL PRIMARY KEY, "
             + ColumnName_AD_User_ID + " INTEGER, "
             + ColumnName_C_BPartner_ID + " INTEGER, "
             + ColumnName_Username + " VARCHAR(50), "
             + ColumnName_Password + " VARCHAR(50), "
             + ColumnName_IsActiveUser + " VARCHAR(10) "
             + "); " ;
+
+    static String tableDeletionSQL = "DROP TABLE IF EXISTS " + Table_Name + "; ";
 }

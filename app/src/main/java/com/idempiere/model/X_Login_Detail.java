@@ -1,9 +1,11 @@
 package com.idempiere.model;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.util.Log;
 
 import com.idempiere.database.DBQuery;
+import com.idempiere.error.SalesAppException;
 import com.idempiere.utils.WSRUtils;
 import com.idempiere.webserviceRequest.UserDetailsRequest;
 
@@ -69,13 +71,24 @@ public class X_Login_Detail extends DBObject implements I_X_LoginDetail{
                 c_Bpartner_ID = detail.getC_Bpartner_ID();
             }
         }
-        ContentValues values = new ContentValues();
-        values.put(I_X_LoginDetail.ColumnName_AD_User_ID, ad_User_ID);
-        values.put(I_X_LoginDetail.ColumnName_C_BPartner_ID, c_Bpartner_ID);
-        values.put(I_X_LoginDetail.ColumnName_Username, username);
-        values.put(I_X_LoginDetail.ColumnName_Password, password);
-        values.put(I_X_LoginDetail.ColumnName_IsActiveUser, isActiveUser);
-        Log.v("InsertingValues", "SavingLoginDetails");
-        return DBQuery.insertValues(I_X_LoginDetail.Table_Name, values);
+        int ad_User = 0;
+        Cursor curs = DBQuery.executeQuery("SELECT * FROM X_Login_Detail WHERE AD_User_ID = " + ad_User_ID + " ");
+        while (curs.moveToNext()) {
+            ad_User = curs.getInt(curs.getColumnIndex(I_X_LoginDetail.ColumnName_AD_User_ID));
+        }
+        if (ad_User == 0) {
+            ContentValues values = new ContentValues();
+            values.put(I_X_LoginDetail.ColumnName_AD_User_ID, ad_User_ID);
+            values.put(I_X_LoginDetail.ColumnName_C_BPartner_ID, c_Bpartner_ID);
+            values.put(I_X_LoginDetail.ColumnName_Username, username);
+            values.put(I_X_LoginDetail.ColumnName_Password, password);
+            values.put(I_X_LoginDetail.ColumnName_IsActiveUser, isActiveUser);
+            Log.v("InsertingValues", "SavingLoginDetails");
+            return DBQuery.insertValues(I_X_LoginDetail.Table_Name, values);
+        }
+        else {
+            Log.i("InsertingUser", "User record already exists");
+            return -1;
+        }
     }
 }

@@ -273,7 +273,7 @@ public class X_ModelADServiceSoapBinding
                 PropertyInfo __info = null;
                 __info = new PropertyInfo();
                 __info.namespace = "http://idempiere.org/ADInterface/1_0";
-                __info.name = "ModelCRUDRequest";
+                __info.name = "ModelRunProcess";
                 __info.type = X_ModelCRUDRequest.class;
                 __info.setValue(ModelCRUDRequest);
                 __soapReq.addProperty(__info);
@@ -314,7 +314,9 @@ public class X_ModelADServiceSoapBinding
             }
         },"");
     }
-    
+
+
+
     public String deleteData(final String ModelCRUDRequest ) throws Exception
     {
 

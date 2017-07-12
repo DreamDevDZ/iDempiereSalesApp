@@ -8,6 +8,7 @@ import com.idempiere.webservice.X_ADLoginResponse;
 import com.idempiere.webservice.X_ModelADServiceSoapBinding;
 import com.idempiere.webservice.X_ModelCRUD;
 import com.idempiere.webservice.X_ModelCRUDRequest;
+import com.idempiere.webservice.X_RunProcessResponse;
 import com.idempiere.webservice.X_StandardResponse;
 import com.idempiere.webservice.X_WindowTabData;
 
@@ -152,12 +153,18 @@ public class WebServiceRequest implements I_WebServiceRequest{
     }
 
 
-    public void runProcess(){
+    public X_RunProcessResponse runProcess(){
         if (!type.equals(RUN_PROCESS)){
             throw new SalesAppException("Cannot call runProcess method on type " + type);
         }
-
-        /** Yet to implement for running process **/
+        try {
+            X_RunProcessResponse runProcessResponse = soapBinding.runProcess(modelCRUDRequest);
+            return runProcessResponse;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+       return null;
     }
 
 

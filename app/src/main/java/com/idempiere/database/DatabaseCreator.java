@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.idempiere.model.I_X_Action;
+import com.idempiere.model.I_X_LoginDetail;
 import com.idempiere.model.X_Action;
 import com.idempiere.model.X_Login_Detail;
 
@@ -19,19 +21,22 @@ public class DatabaseCreator extends SQLiteOpenHelper  {
 
 
     public DatabaseCreator(Context context){
-        super(context, SQLITE_DATABASE_NAME, null, 5);
+        super(context, SQLITE_DATABASE_NAME, null, 1);
     }
 
     public static StringBuffer generateDBCreationQuery() {
         StringBuffer createDB = new StringBuffer();
-        // createDB.append(X_Action.tableCreationSQL);
-        createDB.append(X_Login_Detail.tableCreationSQL);
+        createDB.append(I_X_LoginDetail.tableCreationSQL);
+        createDB.append(I_X_Action.tableCreationSQL);
+        Log.v("DatabaseCreation", createDB.toString());
         return createDB;
     }
 
     public static StringBuffer generateDBDeletionQuery(){
         StringBuffer deleteDB = new StringBuffer();
-        deleteDB.append(X_Action.tableDeletionSQL);
+        deleteDB.append(I_X_LoginDetail.tableDeletionSQL);
+        deleteDB.append(I_X_Action.tableDeletionSQL);
+        Log.v("DatabaseUpgrade", deleteDB.toString());
         return deleteDB;
     }
 
@@ -39,15 +44,17 @@ public class DatabaseCreator extends SQLiteOpenHelper  {
     /** Called on the initial install of the app **/
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DatabaseCreator.generateDBCreationQuery().toString());
-        Log.v("DatabaseCreation", "DatabaseHelper created without errors" );
+        db.execSQL(I_X_Action.tableCreationSQL);
+        db.execSQL(I_X_LoginDetail.tableCreationSQL);
+        Log.v("DatabaseCreation", "onCreate method called and ended" );
     }
 
     /** Called every time the app is called if database is a new version **/
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(generateDBDeletionQuery().toString());
         Log.v("DatabaseUpgrade", "DatabaseHelper upgraded - Version : " + newVersion);
-        db.execSQL(DatabaseCreator.generateDBDeletionQuery().toString());
+        Log.v("onCreateCall", "Calling onCreate method after upgrade ");
         onCreate(db);
     }
 }

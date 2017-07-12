@@ -39,7 +39,7 @@ public class UserDetailsRequest extends AsyncTask<Void, Void, X_Login_Detail> {
 
     private X_Login_Detail getUserDetails(){
         modelCRUD = WSRUtils.createModelCRUD(I_WebServiceConstants.SMA_GetUserDetails, I_X_ADUser.Table_Name, X_Enums.ModelCRUD_Action.Read);
-        WSRUtils.addParameters(createUserDetailParameters());
+        modelCRUD.setDataRow(createUserDetailParameters());
         loginRequest = WSRUtils.createLoginRequest(username, password);
         wsr = new WebServiceRequest(modelCRUD, I_WebServiceRequest.QUERY_DATA);
         wsr.setLoginRequest(loginRequest);

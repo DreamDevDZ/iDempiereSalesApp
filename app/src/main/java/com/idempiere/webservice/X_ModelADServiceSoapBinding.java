@@ -177,14 +177,14 @@ public class X_ModelADServiceSoapBinding
         },"");
     }
     
-    public X_WindowTabData getList(final X_ModelGetListRequest ModelGetListRequest ) throws Exception
+    public X_WindowTabData getList(final X_ModelRunProcessRequest ModelGetListRequest ) throws Exception
     {
         return (X_WindowTabData)execute(new X_IWcfMethod()
         {
             @Override
             public X_ExtendedSoapSerializationEnvelope CreateSoapEnvelope(){
               X_ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
-                __envelope.addMapping("http://idempiere.org/ADInterface/1_0","ModelGetListRequest",new X_ModelGetListRequest().getClass());
+                __envelope.addMapping("http://idempiere.org/ADInterface/1_0","ModelGetListRequest",new X_ModelRunProcessRequest().getClass());
                 SoapObject __soapReq = new SoapObject("http://idempiere.org/ADInterface/1_0", "getList");
                 __envelope.setOutputSoapObject(__soapReq);
                 
@@ -192,7 +192,7 @@ public class X_ModelADServiceSoapBinding
                 __info = new PropertyInfo();
                 __info.namespace="http://idempiere.org/ADInterface/1_0";
                 __info.name="ModelGetListRequest";
-                __info.type=X_ModelGetListRequest.class;
+                __info.type=X_ModelRunProcessRequest.class;
                 __info.setValue(ModelGetListRequest);
                 __soapReq.addProperty(__info);
                 return __envelope;
@@ -261,21 +261,21 @@ public class X_ModelADServiceSoapBinding
         },"");
     }
     
-    public X_RunProcessResponse runProcess(final X_ModelCRUDRequest ModelCRUDRequest ) throws Exception {
+    public X_RunProcessResponse runProcess(final X_ModelRunProcessRequest ModelRunProcessRequest ) throws Exception {
         return (X_RunProcessResponse) execute(new X_IWcfMethod() {
             @Override
             public X_ExtendedSoapSerializationEnvelope CreateSoapEnvelope() {
                 X_ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
-                __envelope.addMapping("http://idempiere.org/ADInterface/1_0", "ModelCRUDRequest", new X_ModelCRUDRequest().getClass());
+                __envelope.addMapping("http://idempiere.org/ADInterface/1_0", "ModelRunProcessRequest", new X_ModelRunProcessRequest().getClass());
                 SoapObject __soapReq = new SoapObject("http://idempiere.org/ADInterface/1_0", "runProcess");
                 __envelope.setOutputSoapObject(__soapReq);
 
                 PropertyInfo __info = null;
                 __info = new PropertyInfo();
                 __info.namespace = "http://idempiere.org/ADInterface/1_0";
-                __info.name = "ModelRunProcess";
-                __info.type = X_ModelCRUDRequest.class;
-                __info.setValue(ModelCRUDRequest);
+                __info.name = "ModelRunProcessRequest";
+                __info.type = X_ModelRunProcessRequest.class;
+                __info.setValue(ModelRunProcessRequest);
                 __soapReq.addProperty(__info);
                 return __envelope;
             }

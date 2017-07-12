@@ -8,6 +8,8 @@ import com.idempiere.webservice.X_ADLoginResponse;
 import com.idempiere.webservice.X_ModelADServiceSoapBinding;
 import com.idempiere.webservice.X_ModelCRUD;
 import com.idempiere.webservice.X_ModelCRUDRequest;
+import com.idempiere.webservice.X_ModelRunProcess;
+import com.idempiere.webservice.X_ModelRunProcessRequest;
 import com.idempiere.webservice.X_RunProcessResponse;
 import com.idempiere.webservice.X_StandardResponse;
 import com.idempiere.webservice.X_WindowTabData;
@@ -21,9 +23,11 @@ import java.util.ArrayList;
  * from the Sales App to the iDempiere SOAP Web-Service
  * Abstracted out most of the unnecessary details
  */
-public class WebServiceRequest implements I_WebServiceRequest{
+public class WebServiceRequest implements I_WebServiceRequest {
 
     protected X_ModelCRUD modelCRUD;
+    protected X_ModelRunProcess modelRunProcess;
+    protected X_ModelRunProcessRequest modelRunProcessRequest;
     protected X_ModelCRUDRequest modelCRUDRequest;
     protected X_ADLoginRequest loginRequest;
     protected X_ModelADServiceSoapBinding soapBinding;
@@ -36,6 +40,28 @@ public class WebServiceRequest implements I_WebServiceRequest{
      * by calling the appropriate method for that type
      **/
 
+
+    public WebServiceRequest(X_ModelRunProcess runProcess, String type, X_ADLoginRequest loginRequest){
+        this.loginRequest = loginRequest;
+        createArrayOfTypes();
+        if (!allTypes.contains(type)) {
+            throw new SalesAppException("Request type not a registered type - please choose from specified WebServiceRequest constants ");
+        }
+        BASE_URL += type;
+        Log.v("RequestTypeURL", BASE_URL);
+        this.type = type;
+        setModelRunProcess(runProcess);
+        createModelRunProcessRequest();
+    }
+
+    private void setModelRunProcess(X_ModelRunProcess runProcess){
+        this.modelRunProcess = runProcess;
+    }
+
+    private void createModelRunProcessRequest(){
+        modelRunProcessRequest = new X_ModelRunProcessRequest(modelRunProcess, loginRequest);
+        createSoapBinding();
+    }
 
 
     public WebServiceRequest(X_ModelCRUD modelCRUD, String type) {
@@ -158,10 +184,10 @@ public class WebServiceRequest implements I_WebServiceRequest{
             throw new SalesAppException("Cannot call runProcess method on type " + type);
         }
         try {
-            X_RunProcessResponse runProcessResponse = soapBinding.runProcess(modelCRUDRequest);
+            X_RunProcessResponse runProcessResponse = soapBinding.runProcess(modelRunProcessRequest);
             return runProcessResponse;
         }
-        catch (Exception e){
+        catch (Exception e) {
             e.printStackTrace();
         }
        return null;

@@ -39,8 +39,8 @@ public class X_ExtendedSoapSerializationEnvelope extends SoapSerializationEnvelo
         classNames.put("http://idempiere.org/ADInterface/1_0^^outputField",X_OutputField.class);
         classNames.put("http://idempiere.org/ADInterface/1_0^^ModelSetDocAction",X_ModelSetDocAction.class);
         classNames.put("http://idempiere.org/ADInterface/1_0^^ModelSetDocActionRequest",X_ModelSetDocActionRequest.class);
-        classNames.put("http://idempiere.org/ADInterface/1_0^^ModelGetList",X_ModelGetList.class);
-        classNames.put("http://idempiere.org/ADInterface/1_0^^ModelGetListRequest",X_ModelGetListRequest.class);
+        classNames.put("http://idempiere.org/ADInterface/1_0^^ModelRunProcess",X_ModelGetList.class);
+        classNames.put("http://idempiere.org/ADInterface/1_0^^ModelGetListRequest",X_ModelRunProcessRequest.class);
         classNames.put("http://idempiere.org/ADInterface/1_0^^ModelCRUD",X_ModelCRUD.class);
         classNames.put("http://idempiere.org/ADInterface/1_0^^ModelCRUDRequest",X_ModelCRUDRequest.class);
         classNames.put("http://idempiere.org/ADInterface/1_0^^DataSet",X_DataSet.class);

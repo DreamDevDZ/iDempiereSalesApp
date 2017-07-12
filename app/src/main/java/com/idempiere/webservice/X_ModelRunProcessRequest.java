@@ -17,22 +17,26 @@ import org.ksoap2.serialization.SoapObject;
 
 import java.util.Hashtable;
 
-public class X_ModelGetListRequest extends AttributeContainer implements KvmSerializable
+public class X_ModelRunProcessRequest extends AttributeContainer implements KvmSerializable
 {
 
-    
-    public X_ModelGetList ModelGetList;
-    
+
+    public X_ModelRunProcess ModelRunProcess;
+
     public X_ADLoginRequest ADLoginRequest;
 
-    public X_ModelGetListRequest()
+    public X_ModelRunProcessRequest () {}
+
+    public X_ModelRunProcessRequest(X_ModelRunProcess modelRunProcess, X_ADLoginRequest loginRequest)
     {
+        this.ModelRunProcess = modelRunProcess;
+        this.ADLoginRequest = loginRequest;
     }
 
-    public X_ModelGetListRequest(Object paramObj, X_ExtendedSoapSerializationEnvelope __envelope)
+    public X_ModelRunProcessRequest(Object paramObj, X_ExtendedSoapSerializationEnvelope __envelope)
     {
-	    
-	    if (paramObj == null)
+
+        if (paramObj == null)
             return;
         AttributeContainer inObj=(AttributeContainer)paramObj;
 
@@ -51,7 +55,7 @@ public class X_ModelGetListRequest extends AttributeContainer implements KvmSeri
                     if(obj!=null)
                     {
                         Object j = obj;
-                        this.ModelGetList = (X_ModelGetList)__envelope.get(j,X_ModelGetList.class,false);
+                        this.ModelRunProcess = (X_ModelRunProcess)__envelope.get(j,X_ModelRunProcess.class,false);
                     }
                     continue;
                 }
@@ -79,7 +83,7 @@ public class X_ModelGetListRequest extends AttributeContainer implements KvmSeri
         //!!!!! You can find a correct version in Lib folder from generated zip file!!!!!
         if(propertyIndex==0)
         {
-            return ModelGetList;
+            return ModelRunProcess;
         }
         if(propertyIndex==1)
         {
@@ -110,12 +114,12 @@ public class X_ModelGetListRequest extends AttributeContainer implements KvmSeri
             info.namespace= "http://idempiere.org/ADInterface/1_0";
         }
     }
-    
+
     @Override
     public void setProperty(int arg0, Object arg1)
     {
     }
 
-    
+
 }
 

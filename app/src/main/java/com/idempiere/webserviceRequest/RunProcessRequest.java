@@ -4,12 +4,13 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.PowerManager;
 import android.util.Base64;
+import android.util.Log;
 
 import com.idempiere.utils.WSRUtils;
 import com.idempiere.webservice.X_ADLoginRequest;
 import com.idempiere.webservice.X_DataField;
 import com.idempiere.webservice.X_DataRow;
-import com.idempiere.webservice.X_ModelCRUD;
+import com.idempiere.webservice.X_ModelRunProcess;
 import com.idempiere.webservice.X_RunProcessResponse;
 
 /**
@@ -25,7 +26,7 @@ public class RunProcessRequest extends AsyncTask<Void, Void, Void> {
     }
 
     WebServiceRequest wsr;
-    private X_ModelCRUD modelCRUD;
+    private X_ModelRunProcess modelRunP;
     X_ADLoginRequest loginRequest;
     private String user;
     private String pass;
@@ -38,27 +39,60 @@ public class RunProcessRequest extends AsyncTask<Void, Void, Void> {
 
 
     private void runProcessRequest() {
-        modelCRUD = new X_ModelCRUD();
-        modelCRUD.setServiceType("SMAColumnGenerator");
-        X_DataRow params = new X_DataRow();
-        X_DataField processID = new X_DataField();
-        processID.setColumn("AD_Process_ID");
-        processID.setVal("1000173");
-        params.add(processID);
-        modelCRUD.setDataRow(params);
-
-
-        wsr = new WebServiceRequest(modelCRUD, I_WebServiceRequest.RUN_PROCESS);
+        modelRunP = new X_ModelRunProcess();
+        modelRunP.setServiceType("SMAColumnGenerator");
         loginRequest = WSRUtils.createLoginRequest(user, pass);
-        wsr.setLoginRequest(loginRequest);
+        wsr = new WebServiceRequest(modelRunP, I_WebServiceRequest.RUN_PROCESS, loginRequest);
         X_RunProcessResponse response = wsr.runProcess();
-        byte[] resp = Base64.decode(response.LogInfo.getBytes(), 0);
-        try {
-            String str = new String(resp, "UTF-8");
+
+        if (response.Error != null)
+             Log.v("responseError", response.Error);
+
+        if (response.Summary != null){
+            Log.v("WhichHitResponse", "Summary");
+            String respons = null;
+
+            byte[] resp = Base64.decode(response.Summary.getBytes(), 0);
+            try {
+                respons = new String(resp, "UTF-8");
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            Log.v("ProcessSummary", respons);
         }
-        catch (Exception e){
-            e.printStackTrace();
+        if (response.LogInfo != null){
+            Log.v("WhichHitResponse", "LogInfo");
+            String respons = null;
+            byte[] resp = Base64.decode(response.LogInfo.getBytes(), 0);
+            try {
+                respons = new String(resp, "UTF-8");
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            Log.v("ProcessLogInfo", respons);
         }
+
+        if (response.Data != null){
+            Log.v("WhichHitResponse", "Data");
+            String respons = null;
+            byte[] resp = Base64.decode(response.Data.getBytes(), 0);
+            try {
+                respons = new String(resp, "UTF-8");
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            Log.v("ProcessData", respons);
+        }
+
+        if (response.ADLoginResponse != null){
+            Log.v("WhichHitResponse", "ADLoginResponse");
+            String respons = response.ADLoginResponse.langs;
+            Log.v("ADLoginResponse", respons);
+        }
+
 
 
     }

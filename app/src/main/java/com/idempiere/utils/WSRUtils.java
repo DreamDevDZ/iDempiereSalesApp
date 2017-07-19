@@ -12,6 +12,7 @@ import com.idempiere.webservice.X_DataRow;
 import com.idempiere.webservice.X_DataSet;
 import com.idempiere.webservice.X_Enums;
 import com.idempiere.webservice.X_ModelCRUD;
+import com.idempiere.webservice.X_ModelRunProcess;
 import com.idempiere.webservice.X_WindowTabData;
 import com.idempiere.webserviceRequest.I_WebServiceConstants;
 import com.idempiere.webserviceRequest.WebServiceRequest;
@@ -42,9 +43,43 @@ public class WSRUtils {
              modelCRUD.setTableName(tableName);
         if (action != null)
             modelCRUD.setAction(action);
-
         return modelCRUD;
     }
+
+
+    public static X_ModelRunProcess createModelRunProcess(String serviceType, int AD_Process_ID, int AD_Record_ID){
+        X_ModelRunProcess runProcess = new X_ModelRunProcess();
+        runProcess.setServiceType(serviceType);
+        runProcess.setParamValues(createParamValues(AD_Process_ID, AD_Record_ID));
+        return runProcess;
+    }
+
+
+    public static X_ModelRunProcess createModelRunProcess(String serviceType, X_DataRow paramValues){
+        X_ModelRunProcess runProcess = new X_ModelRunProcess();
+        runProcess.setServiceType(serviceType);
+        runProcess.setParamValues(paramValues);
+        return runProcess;
+    }
+
+
+    private static X_DataRow createParamValues(int AD_Process_ID, int AD_Record_ID){
+        X_DataRow paramValues = new X_DataRow();
+        X_DataField ad_Process_ID = new X_DataField();
+        X_DataField ad_Record_ID = new X_DataField();
+        if (AD_Process_ID != 0){
+            ad_Process_ID.setColumn("AD_Process_ID");
+            ad_Process_ID.setVal(String.valueOf(AD_Process_ID));
+            paramValues.add(ad_Process_ID);
+        }
+        if (AD_Record_ID != 0){
+            ad_Record_ID.setColumn("AD_Record_ID");
+            ad_Record_ID.setVal(String.valueOf(AD_Record_ID));
+            paramValues.add(ad_Record_ID);
+        }
+        return paramValues;
+    }
+
 
     public static X_ADLoginRequest createLoginRequest(String user, String pass){
         if (user == null || pass == null) {
@@ -59,6 +94,7 @@ public class WSRUtils {
                 1000000, 0);
         return aDLoginRequest;
     }
+
 
 
     public void setParameters(X_DataRow parameters) {

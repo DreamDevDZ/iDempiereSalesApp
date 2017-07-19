@@ -9,6 +9,8 @@ import com.idempiere.error.SalesAppException;
 import com.idempiere.utils.WSRUtils;
 import com.idempiere.webserviceRequest.UserDetailsRequest;
 
+import org.json.JSONObject;
+
 /**
  * Created by ben on 08/07/17.
  */
@@ -59,6 +61,8 @@ public class X_Login_Detail extends DBObject implements I_X_LoginDetail{
         this.username = username;
     }
 
+
+
     /** On save of this record we first fetch the users AD_User_ID and C_BPartner_ID from the Database **/
     @Override
     public long save() throws Exception {
@@ -90,5 +94,10 @@ public class X_Login_Detail extends DBObject implements I_X_LoginDetail{
             Log.i("InsertingUser", "User record already exists");
             return -1;
         }
+    }
+
+    @Override
+    public void fromJson(JSONObject responseObject) {
+
     }
 }

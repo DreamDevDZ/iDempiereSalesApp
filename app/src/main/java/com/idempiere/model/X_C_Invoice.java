@@ -6,7 +6,7 @@ import org.json.JSONObject;
  * Created by ben on 21/05/17.
  */
 
-public class X_Telesales_Action extends DBObject {
+public class X_C_Invoice extends DBObject {
     @Override
     public long save() throws Exception {
         return 0;

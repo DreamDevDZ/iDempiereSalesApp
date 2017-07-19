@@ -32,6 +32,7 @@ public class ResponseParser {
         else if (response instanceof X_StandardResponse){
             standardResponse = (X_StandardResponse) response;
         }
+
     }
 
 

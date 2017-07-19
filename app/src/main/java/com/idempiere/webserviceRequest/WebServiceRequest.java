@@ -64,7 +64,8 @@ public class WebServiceRequest implements I_WebServiceRequest {
     }
 
 
-    public WebServiceRequest(X_ModelCRUD modelCRUD, String type) {
+    public WebServiceRequest(X_ModelCRUD modelCRUD, String type, X_ADLoginRequest loginRequest) {
+        this.loginRequest = loginRequest;
         createArrayOfTypes();
         if (!allTypes.contains(type)) {
             throw new SalesAppException("Request type not a registered type - please choose from specified WebServiceRequest constants ");
@@ -73,13 +74,13 @@ public class WebServiceRequest implements I_WebServiceRequest {
         Log.v("RequestTypeURL", BASE_URL);
         this.type = type;
         setModelCRUD(modelCRUD);
+        createModelCRUDRequest();
+        createSoapBinding();
     }
 
 
     public void setLoginRequest(X_ADLoginRequest loginRequest){
         this.loginRequest = loginRequest;
-        createModelCRUDRequest();
-        createSoapBinding();
     }
 
 

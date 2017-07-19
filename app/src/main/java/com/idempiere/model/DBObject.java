@@ -1,11 +1,17 @@
 package com.idempiere.model;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 
+import com.idempiere.database.DBQuery;
 import com.idempiere.utils.DBUtils;
+
+import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.HashSet;
+
 
 /**
  * Created by benparker on 10/07/17.
@@ -14,14 +20,13 @@ import java.sql.Timestamp;
 public abstract class DBObject implements I_Saveable, Serializable {
 
 
-    private int AD_Client_ID = 1000000;
-    private int AD_Org_ID = 1000000;
-    private Timestamp created;
-    private String isActive = "Y";
+    private final static int AD_Client_ID = 1000000;
+    private final static int AD_Org_ID = 1000000;
+    private final static String isActive = "Y";
 
 
     public ContentValues getMandatoryContentValues(){
-        created = new Timestamp(System.currentTimeMillis());
+        Timestamp created = new Timestamp(System.currentTimeMillis());
         int ad_User_ID = DBUtils.getLoggedInUser().getAd_User_ID();
         ContentValues values = new ContentValues();
             values.put(I_Saveable.ColumnName_AD_CLIENT_ID, AD_Client_ID);
@@ -33,4 +38,9 @@ public abstract class DBObject implements I_Saveable, Serializable {
             values.put(I_Saveable.ColumnName_ISACTIVE, isActive);
         return values;
     }
+
+
+    public abstract void fromJson(JSONObject responseObject);
+
+
 }

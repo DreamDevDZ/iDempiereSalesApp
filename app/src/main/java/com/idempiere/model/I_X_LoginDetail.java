@@ -16,7 +16,7 @@ public interface I_X_LoginDetail {
 
     /** TODO - Store password as hashed password **/
     static String tableCreationSQL = "CREATE TABLE " + Table_Name + " ( "
-            + ColumnName_X_LoginDetail_ID + " BIGSERIAL PRIMARY KEY, "
+            + ColumnName_X_LoginDetail_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + ColumnName_AD_User_ID + " INTEGER, "
             + ColumnName_C_BPartner_ID + " INTEGER, "
             + ColumnName_Username + " VARCHAR(50), "

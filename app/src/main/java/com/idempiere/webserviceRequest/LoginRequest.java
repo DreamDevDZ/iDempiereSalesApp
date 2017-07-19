@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.idempiere.error.SalesAppException;
+import com.idempiere.utils.WSRUtils;
 import com.idempiere.webservice.X_ADLoginRequest;
 import com.idempiere.webservice.X_ADLoginResponse;
 import com.idempiere.webservice.X_DataField;
@@ -40,8 +41,7 @@ public class LoginRequest extends AsyncTask<Void, Void, Integer> {
 
         X_ADLoginRequest loginRequest = createLoginRequest(username, password);
         X_ModelCRUD modelCrud = createModelCRUD();
-        wsRequest = new WebServiceRequest(modelCrud, I_WebServiceRequest.READ_DATA);
-        wsRequest.setLoginRequest(loginRequest);
+        wsRequest = new WebServiceRequest(modelCrud, I_WebServiceRequest.READ_DATA, WSRUtils.createLoginRequest(username, password));
     }
 
 

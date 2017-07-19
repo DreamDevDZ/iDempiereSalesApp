@@ -67,20 +67,16 @@ public interface I_X_Action {
         public Timestamp getEndDate();
 
         public static final String COLUMNNAME_IsActive = "IsActive";
-        public void setIsActive (boolean IsActive);
-        public boolean isActive();
+        public void setIsActive (String IsActive);
+        public String isActive();
 
         public static final String COLUMNNAME_IsComplete = "IsComplete";
-        public void setIsComplete (boolean IsComplete);
-        public boolean isComplete();
-
-        public static final String COLUMNNAME_ISObjectiveSuccess = "ISObjectiveSuccess";
-        public void setISObjectiveSuccess (boolean ISObjectiveSuccess);
-        public boolean isObjectiveSuccess();
+        public void setIsComplete (String IsComplete);
+        public String isComplete();
 
         static final String COLUMNNAME_IsProcessGenerated = "IsProcessGenerated";
-        void setIsProcessGenerated (boolean IsProcessGenerated);
-        boolean isProcessGenerated();
+        void setIsProcessGenerated (String IsProcessGenerated);
+        String isProcessGenerated();
 
         static final String COLUMNNAME_Result = "Result";
         void setResult (String Result);
@@ -121,7 +117,15 @@ public interface I_X_Action {
                 + COLUMNNAME_CreatedBy + " INTEGER, "
                 + COLUMNNAME_Updated + " TEXT, "
                 + COLUMNNAME_UpdatedBy + " INTEGER, "
-                + COLUMNNAME_IsActive + " INTEGER "
+                + COLUMNNAME_IsActive + " TEXT, "
+                + COLUMNNAME_Comments + " TEXT, "
+                + COLUMNNAME_Result + " TEXT, "
+                + COLUMNNAME_IsComplete + " TEXT, "
+                + COLUMNNAME_IsProcessGenerated + " TEXT, "
+                + COLUMNNAME_SalesRep_ID + " INTEGER, "
+                + COLUMNNAME_EndDate + " TEXT, "
+                + COLUMNNAME_ContactActivityType + " TEXT, "
+                + COLUMNNAME_DateActivityComplete + " TEXT "
                 + "); " ;
 
         static String tableDeletionSQL = "DROP TABLE IF EXISTS " + Table_Name + "; ";

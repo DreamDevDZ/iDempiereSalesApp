@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.idempiere.error.SalesAppException;
+import com.idempiere.utils.WSRUtils;
 import com.idempiere.webservice.X_ADLoginRequest;
 import com.idempiere.webservice.X_DataField;
 import com.idempiere.webservice.X_DataRow;
@@ -113,7 +114,7 @@ public class TestRequest extends AsyncTask<Void, Void, Void>{
 
 
     public void createReadData(){
-        WebServiceRequest wsr = new WebServiceRequest(createModelCRUD(), I_WebServiceRequest.READ_DATA);
+        WebServiceRequest wsr = new WebServiceRequest(createModelCRUD(), I_WebServiceRequest.READ_DATA, WSRUtils.createLoginRequest(null, null));
         X_WindowTabData actionData = wsr.queryData();
 
         if (actionData.Error != null) {

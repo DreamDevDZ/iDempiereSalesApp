@@ -11,6 +11,8 @@ import com.iDempiere.R;
 import com.idempiere.calendar.MenuCalendarOptionPopup;
 import com.idempiere.listeners.MainMenuClickListener;
 import com.idempiere.listeners.OnClickListeners;
+import com.idempiere.model.I_X_Action;
+import com.idempiere.webserviceRequest.PullDataRequest;
 import com.idempiere.webserviceRequest.RunProcessRequest;
 import com.imanoweb.calendarview.CalendarListener;
 import com.imanoweb.calendarview.CustomCalendarView;
@@ -47,8 +49,10 @@ public class MainMenu extends AppCompatActivity {
         createGreetingMessage(userName);
         addActionListeners();
         addCalendarClickListeners();
-        RunProcessRequest rpr = new RunProcessRequest(userName, password);
-        rpr.execute();
+        //RunProcessRequest rpr = new RunProcessRequest(userName, password);
+        //rpr.execute();
+        PullDataRequest pdr = new PullDataRequest(I_X_Action.SMA_App_Table_ID);
+        pdr.execute();
     }
 
 

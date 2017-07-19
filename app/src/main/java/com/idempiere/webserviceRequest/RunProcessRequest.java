@@ -38,14 +38,7 @@ public class RunProcessRequest extends AsyncTask<Void, Void, Void> {
 
 
     private void runProcessRequest() {
-        modelRunP = new X_ModelRunProcess();
-        modelRunP.setServiceType("SMAColumnGenerator");
-        X_DataField dataField = new X_DataField();
-        dataField.setColumn("AD_Process_ID");
-        dataField.setVal("1000173");
-        X_DataRow row = new X_DataRow();
-        row.add(dataField);
-        modelRunP.setParamValues(row);
+        modelRunP = WSRUtils.createModelRunProcess("SMAColumnGenerator", 1000173, 0);
         loginRequest = WSRUtils.createLoginRequest(user, pass);
         wsr = new WebServiceRequest(modelRunP, I_WebServiceRequest.RUN_PROCESS, loginRequest);
         X_RunProcessResponse response = wsr.runProcess();

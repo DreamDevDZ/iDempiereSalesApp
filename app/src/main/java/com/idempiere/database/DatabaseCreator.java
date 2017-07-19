@@ -21,7 +21,7 @@ public class DatabaseCreator extends SQLiteOpenHelper  {
 
 
     public DatabaseCreator(Context context){
-        super(context, SQLITE_DATABASE_NAME, null, 1);
+        super(context, SQLITE_DATABASE_NAME, null, 7);
     }
 
     public static StringBuffer generateDBCreationQuery() {
@@ -52,7 +52,9 @@ public class DatabaseCreator extends SQLiteOpenHelper  {
     /** Called every time the app is called if database is a new version **/
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(generateDBDeletionQuery().toString());
+        //db.execSQL(generateDBDeletionQuery().toString());
+        db.execSQL(I_X_Action.tableDeletionSQL);
+        db.execSQL(I_X_LoginDetail.tableDeletionSQL);
         Log.v("DatabaseUpgrade", "DatabaseHelper upgraded - Version : " + newVersion);
         Log.v("onCreateCall", "Calling onCreate method after upgrade ");
         onCreate(db);

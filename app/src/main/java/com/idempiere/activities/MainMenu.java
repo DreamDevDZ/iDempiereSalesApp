@@ -1,5 +1,6 @@
 package com.idempiere.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -49,10 +50,9 @@ public class MainMenu extends AppCompatActivity {
         createGreetingMessage(userName);
         addActionListeners();
         addCalendarClickListeners();
-        //RunProcessRequest rpr = new RunProcessRequest(userName, password);
-        //rpr.execute();
-        PullDataRequest pdr = new PullDataRequest(I_X_Action.SMA_App_Table_ID);
-        pdr.execute();
+        //PullDataRequest pdr = new PullDataRequest(I_X_Action.SMA_App_Table_ID);
+        //pdr.execute();
+
     }
 
 

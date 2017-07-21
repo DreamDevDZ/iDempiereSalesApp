@@ -28,6 +28,10 @@
             android:name="com.idempiere.activities.MainMenu"
             android:label="Main Menu">
         </activity>
+        <activity
+            android:name="com.idempiere.activities.ActionSchedule"
+            android:label="Action Schedule">
+        </activity>
 
 
 

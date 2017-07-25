@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
-import android.widget.EditText;
 
 import com.iDempiere.R;
-import com.idempiere.database.Database;
 import com.idempiere.listeners.ActionScheduleClickListener;
 
 /**
@@ -17,6 +15,8 @@ import com.idempiere.listeners.ActionScheduleClickListener;
 public class ActionSchedule extends AppCompatActivity {
 
     Button allActions;
+    Button todaysActions;
+    Button todaysRouteActions;
     ActionScheduleClickListener scheduleClickListener = new ActionScheduleClickListener();
     CoordinatorLayout coorLay;
 
@@ -27,10 +27,15 @@ public class ActionSchedule extends AppCompatActivity {
         addActionListeners();
     }
 
+
     private void addActionListeners(){
         coorLay = (CoordinatorLayout)findViewById(R.id.actSchedCoorLayout);
         scheduleClickListener.setCoorLayout(coorLay);
         allActions = (Button)findViewById(R.id.schedAllActionsBut);
         allActions.setOnClickListener(scheduleClickListener);
+        todaysActions = (Button)findViewById(R.id.schedTodaysActionBut);
+        todaysActions.setOnClickListener(scheduleClickListener);
+        todaysRouteActions = (Button)findViewById(R.id.schedTodaysRouteBut);
+        todaysRouteActions.setOnClickListener(scheduleClickListener);
     }
 }

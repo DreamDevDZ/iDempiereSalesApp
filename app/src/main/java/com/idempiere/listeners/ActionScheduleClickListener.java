@@ -1,20 +1,20 @@
 package com.idempiere.listeners;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.CoordinatorLayout;
-import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.iDempiere.R;
-import com.idempiere.activities.ActionSchedule;
+import com.idempiere.database.DBQuery;
 import com.idempiere.error.SalesAppException;
+import com.idempiere.model.X_Action;
+import com.idempiere.utils.ActionScheduleUtils;
 import com.idempiere.utils.DisplayUtils;
+
+import java.util.HashSet;
 
 /**
  * Created by benparker on 21/07/17.
@@ -36,19 +36,51 @@ public class ActionScheduleClickListener extends OnClickListeners {
         handleButtonClicks();
     }
 
+
+    private void handleButtonClicks(){
+        if (coorLayout == null){
+            throw new SalesAppException("You must set a Coordinator Layout to add views to first");
+        }
+        if (v.getId() == R.id.schedAllActionsBut) {
+            clearAndRePopulateTextViews(ActionScheduleUtils.getAllActions());
+        }
+        else if (v.getId() == R.id.schedTodaysActionBut) {
+            clearAndRePopulateTextViews(ActionScheduleUtils.getTodaysActions());
+        }
+        else if (v.getId() == R.id.schedTodaysRouteBut) {
+            clearAndRePopulateTextViews(ActionScheduleUtils.getTodaysRoutedActions());
+        }
+        /** Must be last in the list **/
+        else if (v instanceof TextView){
+            int x_Action_ID = v.getId();
+            DBQuery getActionDetails = new DBQuery();
+            getActionDetails.setSql(" SELECT * FROM X_Action LEFT JOIN X_Business Partner ");
+        }
+    }
+
+
+    private void clearAndRePopulateTextViews(HashSet<X_Action> actions){
+        ActionScheduleUtils.clearCoordinatorLayoutOfTextView(coorLayout);
+        topMarginCounter = 200;
+        for (X_Action action : actions){
+            coorLayout.addView(createTextView(action));
+        }
+    }
+
+
     public void setCoorLayout(CoordinatorLayout layout){
         this.coorLayout = layout;
     }
 
 
-    private TextView createTextView(){
-        Log.v("CreateTextView", "Another view created ");
+    private TextView createTextView(X_Action action){
         final TextView textView = new TextView(context);
         textView.setLayoutParams(createLayoutParams());
         textView.setBackground(getDrawableBorder());
-        textView.set
         textView.setOnClickListener(this);
-        textView.setText("Hello my name Ben how are you doing? Is this enough to take up that many pixels lalalalalalalala ");
+        textView.setId(action.getX_Action_ID());
+        textView.setVisibility(View.VISIBLE);
+        textView.setText(String.valueOf(action.getC_BPartner_ID()));
         return textView;
     }
 
@@ -68,28 +100,6 @@ public class ActionScheduleClickListener extends OnClickListeners {
         final CoordinatorLayout.LayoutParams lparams = new CoordinatorLayout.LayoutParams(scrollViewPXWidth, scrollViewPXHeight);
         lparams.setMargins(0, topMarginCounter, 0, 0);
         return lparams;
-    }
-
-
-    private void handleButtonClicks(){
-        if (coorLayout == null){
-            throw new SalesAppException("You must set a Coordinator Layout to add views to first");
-        }
-        if (v.getId() == R.id.schedAllActionsBut) {
-            Log.v("Schedul All Act", "Button Clicked");
-            for (int i = 0; i < 10 ; i++){
-                coorLayout.addView(createTextView());
-            }
-        }
-        else if (v.getId() == R.id.schedTodaysActionBut) {
-
-        }
-        else if (v.getId() == R.id.schedTodaysRouteBut) {
-
-        }
-        else if (v instanceof Button){
-
-        }
     }
 
 }

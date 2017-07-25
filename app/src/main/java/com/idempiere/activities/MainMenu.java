@@ -1,6 +1,5 @@
 package com.idempiere.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,9 +11,9 @@ import com.iDempiere.R;
 import com.idempiere.calendar.MenuCalendarOptionPopup;
 import com.idempiere.listeners.MainMenuClickListener;
 import com.idempiere.listeners.OnClickListeners;
-import com.idempiere.model.I_X_Action;
+import com.idempiere.model.I_X_C_BPartner;
+import com.idempiere.model.X_C_BPartner;
 import com.idempiere.webserviceRequest.PullDataRequest;
-import com.idempiere.webserviceRequest.RunProcessRequest;
 import com.imanoweb.calendarview.CalendarListener;
 import com.imanoweb.calendarview.CustomCalendarView;
 
@@ -50,9 +49,11 @@ public class MainMenu extends AppCompatActivity {
         createGreetingMessage(userName);
         addActionListeners();
         addCalendarClickListeners();
-        //PullDataRequest pdr = new PullDataRequest(I_X_Action.SMA_App_Table_ID);
-        //pdr.execute();
 
+        //PullDataRequest getAction = new PullDataRequest(I_X_Action.SMA_App_Table_ID);
+        //getAction.execute(new X_Action());
+        PullDataRequest getBP = new PullDataRequest(I_X_C_BPartner.SMA_App_Table_ID);
+        getBP.execute(new X_C_BPartner());
     }
 
 

@@ -1,10 +1,8 @@
 package com.idempiere.webserviceresponse;
 
-import android.database.Cursor;
 import android.util.Base64;
 import android.util.Log;
 
-import com.idempiere.database.DBQuery;
 import com.idempiere.error.SalesAppException;
 import com.idempiere.model.DBObject;
 import com.idempiere.model.I_X_ADUser;
@@ -21,9 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.security.Timestamp;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -79,6 +75,7 @@ public class JSONResponseParser {
             }
             else if (object instanceof X_C_BPartner) {
                 tableName = I_X_C_BPartner.Table_Name;
+                createX_C_BPartnerObject(responseObject);
             }
             else if (object instanceof X_C_Invoice) {
                 tableName = I_X_C_Invoice.Table_Name;
@@ -99,6 +96,14 @@ public class JSONResponseParser {
         }
     }
 
+    private static void createX_C_BPartnerObject(JSONObject responseObject) throws Exception {
+        List<JSONObject> allActions = parseJsonData(responseObject, "BPartners");
+        for (JSONObject action : allActions){
+            X_C_BPartner bPartnerRecord = new X_C_BPartner();
+            bPartnerRecord.fromJson(action);
+            Log.v("InsertBPartnerFromJSON", "" + bPartnerRecord.getC_BPartner_ID() + " Saved ");
+        }
+    }
 
 
     private static List<JSONObject> parseJsonData(JSONObject obj, String pattern) throws JSONException {
@@ -106,7 +111,6 @@ public class JSONResponseParser {
         JSONArray modelArray = obj.getJSONArray(pattern);
         for (int i = 0; i < modelArray.length(); ++i) {
             final JSONObject model = modelArray.getJSONObject(i);
-            Log.v("X_Action_ID", String.valueOf(model.getInt("x_action_id")));
             listOfModelObjects.add(model);
         }
         return listOfModelObjects;

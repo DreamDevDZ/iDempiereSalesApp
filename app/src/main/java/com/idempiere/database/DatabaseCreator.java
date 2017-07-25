@@ -6,9 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.idempiere.model.I_X_Action;
+import com.idempiere.model.I_X_C_BPartner;
 import com.idempiere.model.I_X_LoginDetail;
-import com.idempiere.model.X_Action;
-import com.idempiere.model.X_Login_Detail;
 
 /**
  * Created by ben on 21/05/17.
@@ -21,7 +20,7 @@ public class DatabaseCreator extends SQLiteOpenHelper  {
 
 
     public DatabaseCreator(Context context){
-        super(context, SQLITE_DATABASE_NAME, null, 7);
+        super(context, SQLITE_DATABASE_NAME, null, 12);
     }
 
     public static StringBuffer generateDBCreationQuery() {
@@ -46,6 +45,7 @@ public class DatabaseCreator extends SQLiteOpenHelper  {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(I_X_Action.tableCreationSQL);
         db.execSQL(I_X_LoginDetail.tableCreationSQL);
+        db.execSQL(I_X_C_BPartner.tableCreationSQL);
         Log.v("DatabaseCreation", "onCreate method called and ended" );
     }
 
@@ -55,6 +55,7 @@ public class DatabaseCreator extends SQLiteOpenHelper  {
         //db.execSQL(generateDBDeletionQuery().toString());
         db.execSQL(I_X_Action.tableDeletionSQL);
         db.execSQL(I_X_LoginDetail.tableDeletionSQL);
+        db.execSQL(I_X_C_BPartner.tableDeletionSQL);
         Log.v("DatabaseUpgrade", "DatabaseHelper upgraded - Version : " + newVersion);
         Log.v("onCreateCall", "Calling onCreate method after upgrade ");
         onCreate(db);

@@ -8,931 +8,1257 @@ import java.sql.Timestamp;
  */
 
 public interface I_X_C_BPartner {
-    /** TableName=C_BPartner */
+    /**
+     * TableName=C_BPartner
+     */
     public static final String Table_Name = "C_BPartner";
 
-    static final int App_Table_ID = 1000001;
-    /** AccessLevel = 3 - Client - Org
-     */
-    BigDecimal accessLevel = BigDecimal.valueOf(3);
+    static final int SMA_App_Table_ID = 1000001;
 
-    /** Load Meta Data */
-
-    /** Column name AcqusitionCost */
     public static final String COLUMNNAME_AcqusitionCost = "AcqusitionCost";
 
-    /** Set Acquisition Cost.
-     * The cost of gaining the prospect as a customer
-     */
-    public void setAcqusitionCost (BigDecimal AcqusitionCost);
+    public void setAcqusitionCost(BigDecimal AcqusitionCost);
 
-    /** Get Acquisition Cost.
-     * The cost of gaining the prospect as a customer
-     */
     public BigDecimal getAcqusitionCost();
 
-    /** Column name ActualLifeTimeValue */
+    /**
+     * Column name ActualLifeTimeValue
+     */
     public static final String COLUMNNAME_ActualLifeTimeValue = "ActualLifeTimeValue";
 
-    /** Set Actual Life Time Value.
+    /**
+     * Set Actual Life Time Value.
      * Actual Life Time Revenue
      */
-    public void setActualLifeTimeValue (BigDecimal ActualLifeTimeValue);
+    public void setActualLifeTimeValue(BigDecimal ActualLifeTimeValue);
 
-    /** Get Actual Life Time Value.
+    /**
+     * Get Actual Life Time Value.
      * Actual Life Time Revenue
      */
     public BigDecimal getActualLifeTimeValue();
 
-    /** Column name AD_Client_ID */
+    /**
+     * Column name AD_Client_ID
+     */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
 
-    /** Get Client.
+    /**
+     * Get Client.
      * Client/Tenant for this installation.
      */
     public int getAD_Client_ID();
 
-    /** Column name AD_Language */
+    /**
+     * Column name AD_Language
+     */
     public static final String COLUMNNAME_AD_Language = "AD_Language";
 
-    /** Set Language.
+    /**
+     * Set Language.
      * Language for this entity
      */
-    public void setAD_Language (String AD_Language);
+    public void setAD_Language(String AD_Language);
 
-    /** Get Language.
+    /**
+     * Get Language.
      * Language for this entity
      */
     public String getAD_Language();
 
-    /** Column name AD_OrgBP_ID */
+    /**
+     * Column name AD_OrgBP_ID
+     */
     public static final String COLUMNNAME_AD_OrgBP_ID = "AD_OrgBP_ID";
 
-    /** Set Linked Organization.
+    /**
+     * Set Linked Organization.
      * The Business Partner is another Organization for explicit Inter-Org transactions
      */
-    public void setAD_OrgBP_ID (String AD_OrgBP_ID);
+    public void setAD_OrgBP_ID(String AD_OrgBP_ID);
 
-    /** Get Linked Organization.
+    /**
+     * Get Linked Organization.
      * The Business Partner is another Organization for explicit Inter-Org transactions
      */
     public String getAD_OrgBP_ID();
 
-    /** Column name AD_Org_ID */
+    /**
+     * Column name AD_Org_ID
+     */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
-    /** Set Organization.
+    /**
+     * Set Organization.
      * Organizational entity within client
      */
-    public void setAD_Org_ID (int AD_Org_ID);
+    public void setAD_Org_ID(int AD_Org_ID);
 
-    /** Get Organization.
+    /**
+     * Get Organization.
      * Organizational entity within client
      */
     public int getAD_Org_ID();
 
-    /** Column name BPartner_Parent_ID */
+    /**
+     * Column name BPartner_Parent_ID
+     */
     public static final String COLUMNNAME_BPartner_Parent_ID = "BPartner_Parent_ID";
 
-    /** Set Partner Parent.
+    /**
+     * Set Partner Parent.
      * Business Partner Parent
      */
-    public void setBPartner_Parent_ID (int BPartner_Parent_ID);
+    public void setBPartner_Parent_ID(int BPartner_Parent_ID);
 
-    /** Get Partner Parent.
+    /**
+     * Get Partner Parent.
      * Business Partner Parent
      */
     public int getBPartner_Parent_ID();
 
-    /** Column name C_BPartner_ID */
+    /**
+     * Column name C_BPartner_ID
+     */
     public static final String COLUMNNAME_C_BPartner_ID = "C_BPartner_ID";
 
-    /** Set Business Partner .
+    /**
+     * Set Business Partner .
      * Identifies a Business Partner
      */
-    public void setC_BPartner_ID (int C_BPartner_ID);
+    public void setC_BPartner_ID(int C_BPartner_ID);
 
-    /** Get Business Partner .
+    /**
+     * Get Business Partner .
      * Identifies a Business Partner
      */
     public int getC_BPartner_ID();
 
-    /** Column name C_BPartner_UU */
+    /**
+     * Column name C_BPartner_UU
+     */
     public static final String COLUMNNAME_C_BPartner_UU = "C_BPartner_UU";
 
-    /** Set C_BPartner_UU	  */
-    public void setC_BPartner_UU (String C_BPartner_UU);
+    /**
+     * Set C_BPartner_UU
+     */
+    public void setC_BPartner_UU(String C_BPartner_UU);
 
-    /** Get C_BPartner_UU	  */
+    /**
+     * Get C_BPartner_UU
+     */
     public String getC_BPartner_UU();
 
-    /** Column name C_BP_Group_ID */
+    /**
+     * Column name C_BP_Group_ID
+     */
     public static final String COLUMNNAME_C_BP_Group_ID = "C_BP_Group_ID";
 
-    /** Set Business Partner Group.
+    /**
+     * Set Business Partner Group.
      * Business Partner Group
      */
-    public void setC_BP_Group_ID (int C_BP_Group_ID);
+    public void setC_BP_Group_ID(int C_BP_Group_ID);
 
-    /** Get Business Partner Group.
+    /**
+     * Get Business Partner Group.
      * Business Partner Group
      */
     public int getC_BP_Group_ID();
 
-    /** Column name C_Dunning_ID */
+    /**
+     * Column name C_Dunning_ID
+     */
     public static final String COLUMNNAME_C_Dunning_ID = "C_Dunning_ID";
 
-    /** Set Dunning.
+    /**
+     * Set Dunning.
      * Dunning Rules for overdue invoices
      */
-    public void setC_Dunning_ID (int C_Dunning_ID);
+    public void setC_Dunning_ID(int C_Dunning_ID);
 
-    /** Get Dunning.
+    /**
+     * Get Dunning.
      * Dunning Rules for overdue invoices
      */
     public int getC_Dunning_ID();
 
 
-    /** Column name C_Greeting_ID */
+    /**
+     * Column name C_Greeting_ID
+     */
     public static final String COLUMNNAME_C_Greeting_ID = "C_Greeting_ID";
 
-    /** Set Greeting.
+    /**
+     * Set Greeting.
      * Greeting to print on correspondence
      */
-    public void setC_Greeting_ID (int C_Greeting_ID);
+    public void setC_Greeting_ID(int C_Greeting_ID);
 
-    /** Get Greeting.
+    /**
+     * Get Greeting.
      * Greeting to print on correspondence
      */
     public int getC_Greeting_ID();
 
 
-    /** Column name C_InvoiceSchedule_ID */
+    /**
+     * Column name C_InvoiceSchedule_ID
+     */
     public static final String COLUMNNAME_C_InvoiceSchedule_ID = "C_InvoiceSchedule_ID";
 
-    /** Set Invoice Schedule.
+    /**
+     * Set Invoice Schedule.
      * Schedule for generating Invoices
      */
-    public void setC_InvoiceSchedule_ID (int C_InvoiceSchedule_ID);
+    public void setC_InvoiceSchedule_ID(int C_InvoiceSchedule_ID);
 
-    /** Get Invoice Schedule.
+    /**
+     * Get Invoice Schedule.
      * Schedule for generating Invoices
      */
     public int getC_InvoiceSchedule_ID();
 
 
-    /** Column name C_PaymentTerm_ID */
+    /**
+     * Column name C_PaymentTerm_ID
+     */
     public static final String COLUMNNAME_C_PaymentTerm_ID = "C_PaymentTerm_ID";
 
-    /** Set Payment Term.
+    /**
+     * Set Payment Term.
      * The terms of Payment (timing, discount)
      */
-    public void setC_PaymentTerm_ID (int C_PaymentTerm_ID);
+    public void setC_PaymentTerm_ID(int C_PaymentTerm_ID);
 
-    /** Get Payment Term.
+    /**
+     * Get Payment Term.
      * The terms of Payment (timing, discount)
      */
     public int getC_PaymentTerm_ID();
 
 
-    /** Column name Created */
+    /**
+     * Column name Created
+     */
     public static final String COLUMNNAME_Created = "Created";
 
-    /** Get Created.
+    /**
+     * Get Created.
      * Date this record was created
      */
     public Timestamp getCreated();
 
-    /** Column name CreatedBy */
+    /**
+     * Column name CreatedBy
+     */
     public static final String COLUMNNAME_CreatedBy = "CreatedBy";
 
-    /** Get Created By.
+    /**
+     * Get Created By.
      * User who created this records
      */
     public int getCreatedBy();
 
-    /** Column name C_TaxGroup_ID */
+    /**
+     * Column name C_TaxGroup_ID
+     */
     public static final String COLUMNNAME_C_TaxGroup_ID = "C_TaxGroup_ID";
 
-    /** Set Tax Group	  */
-    public void setC_TaxGroup_ID (int C_TaxGroup_ID);
+    /**
+     * Set Tax Group
+     */
+    public void setC_TaxGroup_ID(int C_TaxGroup_ID);
 
-    /** Get Tax Group	  */
+    /**
+     * Get Tax Group
+     */
     public int getC_TaxGroup_ID();
 
 
-    /** Column name CustomerProfileID */
+    /**
+     * Column name CustomerProfileID
+     */
     public static final String COLUMNNAME_CustomerProfileID = "CustomerProfileID";
 
-    /** Set Customer Profile ID	  */
-    public void setCustomerProfileID (String CustomerProfileID);
+    /**
+     * Set Customer Profile ID
+     */
+    public void setCustomerProfileID(String CustomerProfileID);
 
-    /** Get Customer Profile ID	  */
+    /**
+     * Get Customer Profile ID
+     */
     public String getCustomerProfileID();
 
-    /** Column name Default1099Box_ID */
+    /**
+     * Column name Default1099Box_ID
+     */
     public static final String COLUMNNAME_Default1099Box_ID = "Default1099Box_ID";
 
-    /** Set Default 1099 Box	  */
-    public void setDefault1099Box_ID (int Default1099Box_ID);
+    /**
+     * Set Default 1099 Box
+     */
+    public void setDefault1099Box_ID(int Default1099Box_ID);
 
-    /** Get Default 1099 Box	  */
+    /**
+     * Get Default 1099 Box
+     */
     public int getDefault1099Box_ID();
 
 
-    /** Column name DeliveryRule */
+    /**
+     * Column name DeliveryRule
+     */
     public static final String COLUMNNAME_DeliveryRule = "DeliveryRule";
 
-    /** Set Delivery Rule.
+    /**
+     * Set Delivery Rule.
      * Defines the timing of Delivery
      */
-    public void setDeliveryRule (String DeliveryRule);
+    public void setDeliveryRule(String DeliveryRule);
 
-    /** Get Delivery Rule.
+    /**
+     * Get Delivery Rule.
      * Defines the timing of Delivery
      */
     public String getDeliveryRule();
 
-    /** Column name DeliveryViaRule */
+    /**
+     * Column name DeliveryViaRule
+     */
     public static final String COLUMNNAME_DeliveryViaRule = "DeliveryViaRule";
 
-    /** Set Delivery Via.
+    /**
+     * Set Delivery Via.
      * How the order will be delivered
      */
-    public void setDeliveryViaRule (String DeliveryViaRule);
+    public void setDeliveryViaRule(String DeliveryViaRule);
 
-    /** Get Delivery Via.
+    /**
+     * Get Delivery Via.
      * How the order will be delivered
      */
     public String getDeliveryViaRule();
 
-    /** Column name Description */
+    /**
+     * Column name Description
+     */
     public static final String COLUMNNAME_Description = "Description";
 
-    /** Set Description.
+    /**
+     * Set Description.
      * Optional short description of the record
      */
-    public void setDescription (String Description);
+    public void setDescription(String Description);
 
-    /** Get Description.
+    /**
+     * Get Description.
      * Optional short description of the record
      */
     public String getDescription();
 
-    /** Column name DocumentCopies */
+    /**
+     * Column name DocumentCopies
+     */
     public static final String COLUMNNAME_DocumentCopies = "DocumentCopies";
 
-    /** Set Document Copies.
+    /**
+     * Set Document Copies.
      * Number of copies to be printed
      */
-    public void setDocumentCopies (int DocumentCopies);
+    public void setDocumentCopies(int DocumentCopies);
 
-    /** Get Document Copies.
+    /**
+     * Get Document Copies.
      * Number of copies to be printed
      */
     public int getDocumentCopies();
 
-    /** Column name DunningGrace */
+    /**
+     * Column name DunningGrace
+     */
     public static final String COLUMNNAME_DunningGrace = "DunningGrace";
 
-    /** Set Dunning Grace Date	  */
-    public void setDunningGrace (Timestamp DunningGrace);
+    /**
+     * Set Dunning Grace Date
+     */
+    public void setDunningGrace(Timestamp DunningGrace);
 
-    /** Get Dunning Grace Date	  */
+    /**
+     * Get Dunning Grace Date
+     */
     public Timestamp getDunningGrace();
 
-    /** Column name DUNS */
+    /**
+     * Column name DUNS
+     */
     public static final String COLUMNNAME_DUNS = "DUNS";
 
-    /** Set D-U-N-S.
+    /**
+     * Set D-U-N-S.
      * Dun & Bradstreet Number
      */
-    public void setDUNS (String DUNS);
+    public void setDUNS(String DUNS);
 
-    /** Get D-U-N-S.
+    /**
+     * Get D-U-N-S.
      * Dun & Bradstreet Number
      */
     public String getDUNS();
 
-    /** Column name FirstSale */
+    /**
+     * Column name FirstSale
+     */
     public static final String COLUMNNAME_FirstSale = "FirstSale";
 
-    /** Set First Sale.
+    /**
+     * Set First Sale.
      * Date of First Sale
      */
-    public void setFirstSale (Timestamp FirstSale);
+    public void setFirstSale(Timestamp FirstSale);
 
-    /** Get First Sale.
+    /**
+     * Get First Sale.
      * Date of First Sale
      */
     public Timestamp getFirstSale();
 
-    /** Column name FlatDiscount */
+    /**
+     * Column name FlatDiscount
+     */
     public static final String COLUMNNAME_FlatDiscount = "FlatDiscount";
 
-    /** Set Flat Discount %.
+    /**
+     * Set Flat Discount %.
      * Flat discount percentage
      */
-    public void setFlatDiscount (BigDecimal FlatDiscount);
+    public void setFlatDiscount(BigDecimal FlatDiscount);
 
-    /** Get Flat Discount %.
+    /**
+     * Get Flat Discount %.
      * Flat discount percentage
      */
     public BigDecimal getFlatDiscount();
 
-    /** Column name FreightCostRule */
+    /**
+     * Column name FreightCostRule
+     */
     public static final String COLUMNNAME_FreightCostRule = "FreightCostRule";
 
-    /** Set Freight Cost Rule.
+    /**
+     * Set Freight Cost Rule.
      * Method for charging Freight
      */
-    public void setFreightCostRule (String FreightCostRule);
+    public void setFreightCostRule(String FreightCostRule);
 
-    /** Get Freight Cost Rule.
+    /**
+     * Get Freight Cost Rule.
      * Method for charging Freight
      */
     public String getFreightCostRule();
 
-    /** Column name Invoice_PrintFormat_ID */
+    /**
+     * Column name Invoice_PrintFormat_ID
+     */
     public static final String COLUMNNAME_Invoice_PrintFormat_ID = "Invoice_PrintFormat_ID";
 
-    /** Set Invoice Print Format.
+    /**
+     * Set Invoice Print Format.
      * Print Format for printing Invoices
      */
-    public void setInvoice_PrintFormat_ID (int Invoice_PrintFormat_ID);
+    public void setInvoice_PrintFormat_ID(int Invoice_PrintFormat_ID);
 
-    /** Get Invoice Print Format.
+    /**
+     * Get Invoice Print Format.
      * Print Format for printing Invoices
      */
     public int getInvoice_PrintFormat_ID();
 
 
-    /** Column name InvoiceRule */
+    /**
+     * Column name InvoiceRule
+     */
     public static final String COLUMNNAME_InvoiceRule = "InvoiceRule";
 
-    /** Set Invoice Rule.
+    /**
+     * Set Invoice Rule.
      * Frequency and method of invoicing
      */
-    public void setInvoiceRule (String InvoiceRule);
+    public void setInvoiceRule(String InvoiceRule);
 
-    /** Get Invoice Rule.
+    /**
+     * Get Invoice Rule.
      * Frequency and method of invoicing
      */
     public String getInvoiceRule();
 
-    /** Column name Is1099Vendor */
+    /**
+     * Column name Is1099Vendor
+     */
     public static final String COLUMNNAME_Is1099Vendor = "Is1099Vendor";
 
-    /** Set 1099 Vendor	  */
-    public void setIs1099Vendor (boolean Is1099Vendor);
+    /**
+     * Set 1099 Vendor
+     */
+    public void setIs1099Vendor(boolean Is1099Vendor);
 
-    /** Get 1099 Vendor	  */
+    /**
+     * Get 1099 Vendor
+     */
     public boolean is1099Vendor();
 
-    /** Column name IsActive */
+    /**
+     * Column name IsActive
+     */
     public static final String COLUMNNAME_IsActive = "IsActive";
 
-    /** Set Active.
+    /**
+     * Set Active.
      * The record is active in the system
      */
-    public void setIsActive (boolean IsActive);
+    public void setIsActive(String IsActive);
 
-    /** Get Active.
+    /**
+     * Get Active.
      * The record is active in the system
      */
-    public boolean isActive();
+    public String isActive();
 
-    /** Column name IsCustomer */
+    /**
+     * Column name IsCustomer
+     */
     public static final String COLUMNNAME_IsCustomer = "IsCustomer";
 
-    /** Set Customer.
+    /**
+     * Set Customer.
      * Indicates if this Business Partner is a Customer
      */
-    public void setIsCustomer (boolean IsCustomer);
+    public void setIsCustomer(String IsCustomer);
 
-    /** Get Customer.
+    /**
+     * Get Customer.
      * Indicates if this Business Partner is a Customer
      */
-    public boolean isCustomer();
+    public String isCustomer();
 
-    /** Column name IsDiscountPrinted */
+    /**
+     * Column name IsDiscountPrinted
+     */
     public static final String COLUMNNAME_IsDiscountPrinted = "IsDiscountPrinted";
 
-    /** Set Discount Printed.
+    /**
+     * Set Discount Printed.
      * Print Discount on Invoice and Order
      */
-    public void setIsDiscountPrinted (boolean IsDiscountPrinted);
+    public void setIsDiscountPrinted(String IsDiscountPrinted);
 
-    /** Get Discount Printed.
+    /**
+     * Get Discount Printed.
      * Print Discount on Invoice and Order
      */
-    public boolean isDiscountPrinted();
+    public String isDiscountPrinted();
 
-    /** Column name IsEmployee */
+    /**
+     * Column name IsEmployee
+     */
     public static final String COLUMNNAME_IsEmployee = "IsEmployee";
 
-    /** Set Employee.
+    /**
+     * Set Employee.
      * Indicates if  this Business Partner is an employee
      */
-    public void setIsEmployee (boolean IsEmployee);
+    public void setIsEmployee(String IsEmployee);
 
-    /** Get Employee.
+    /**
+     * Get Employee.
      * Indicates if  this Business Partner is an employee
      */
-    public boolean isEmployee();
+    public String isEmployee();
 
-    /** Column name IsManufacturer */
+    /**
+     * Column name IsManufacturer
+     */
     public static final String COLUMNNAME_IsManufacturer = "IsManufacturer";
 
-    /** Set Is Manufacturer.
+    /**
+     * Set Is Manufacturer.
      * Indicate role of this Business partner as Manufacturer
      */
-    public void setIsManufacturer (boolean IsManufacturer);
+    public void setIsManufacturer(String IsManufacturer);
 
-    /** Get Is Manufacturer.
+    /**
+     * Get Is Manufacturer.
      * Indicate role of this Business partner as Manufacturer
      */
-    public boolean isManufacturer();
+    public String isManufacturer();
 
-    /** Column name IsOneTime */
+    /**
+     * Column name IsOneTime
+     */
     public static final String COLUMNNAME_IsOneTime = "IsOneTime";
 
-    /** Set One time transaction	  */
-    public void setIsOneTime (boolean IsOneTime);
+    /**
+     * Set One time transaction
+     */
+    public void setIsOneTime(boolean IsOneTime);
 
-    /** Get One time transaction	  */
+    /**
+     * Get One time transaction
+     */
     public boolean isOneTime();
 
-    /** Column name IsPOTaxExempt */
+    /**
+     * Column name IsPOTaxExempt
+     */
     public static final String COLUMNNAME_IsPOTaxExempt = "IsPOTaxExempt";
 
-    /** Set PO Tax exempt.
+    /**
+     * Set PO Tax exempt.
      * Business partner is exempt from tax on purchases
      */
-    public void setIsPOTaxExempt (boolean IsPOTaxExempt);
+    public void setIsPOTaxExempt(String IsPOTaxExempt);
 
-    /** Get PO Tax exempt.
+    /**
+     * Get PO Tax exempt.
      * Business partner is exempt from tax on purchases
      */
-    public boolean isPOTaxExempt();
+    public String isPOTaxExempt();
 
-    /** Column name IsProspect */
+    /**
+     * Column name IsProspect
+     */
     public static final String COLUMNNAME_IsProspect = "IsProspect";
 
-    /** Set Prospect.
+    /**
+     * Set Prospect.
      * Indicates this is a Prospect
      */
-    public void setIsProspect (boolean IsProspect);
+    public void setIsProspect(String IsProspect);
 
-    /** Get Prospect.
+    /**
+     * Get Prospect.
      * Indicates this is a Prospect
      */
-    public boolean isProspect();
+    public String isProspect();
 
-    /** Column name IsSalesRep */
+    /**
+     * Column name IsSalesRep
+     */
     public static final String COLUMNNAME_IsSalesRep = "IsSalesRep";
 
-    /** Set Sales Representative.
+    /**
+     * Set Sales Representative.
      * Indicates if  the business partner is a sales representative or company agent
      */
-    public void setIsSalesRep (boolean IsSalesRep);
+    public void setIsSalesRep(String IsSalesRep);
 
-    /** Get Sales Representative.
+    /**
+     * Get Sales Representative.
      * Indicates if  the business partner is a sales representative or company agent
      */
-    public boolean isSalesRep();
+    public String isSalesRep();
 
-    /** Column name IsSummary */
+    /**
+     * Column name IsSummary
+     */
     public static final String COLUMNNAME_IsSummary = "IsSummary";
 
-    /** Set Summary Level.
+    /**
+     * Set Summary Level.
      * This is a summary entity
      */
-    public void setIsSummary (boolean IsSummary);
+    public void setIsSummary(String IsSummary);
 
-    /** Get Summary Level.
+    /**
+     * Get Summary Level.
      * This is a summary entity
      */
-    public boolean isSummary();
+    public String isSummary();
 
-    /** Column name IsTaxExempt */
+    /**
+     * Column name IsTaxExempt
+     */
     public static final String COLUMNNAME_IsTaxExempt = "IsTaxExempt";
 
-    /** Set SO Tax exempt.
+    /**
+     * Set SO Tax exempt.
      * Business partner is exempt from tax on sales
      */
-    public void setIsTaxExempt (boolean IsTaxExempt);
+    public void setIsTaxExempt(String IsTaxExempt);
 
-    /** Get SO Tax exempt.
+    /**
+     * Get SO Tax exempt.
      * Business partner is exempt from tax on sales
      */
-    public boolean isTaxExempt();
+    public String isTaxExempt();
 
-    /** Column name IsVendor */
+    /**
+     * Column name IsVendor
+     */
     public static final String COLUMNNAME_IsVendor = "IsVendor";
 
-    /** Set Vendor.
+    /**
+     * Set Vendor.
      * Indicates if this Business Partner is a Vendor
      */
-    public void setIsVendor (boolean IsVendor);
+    public void setIsVendor(String IsVendor);
 
-    /** Get Vendor.
+    /**
+     * Get Vendor.
      * Indicates if this Business Partner is a Vendor
      */
-    public boolean isVendor();
+    public String isVendor();
 
-    /** Column name Logo_ID */
+    /**
+     * Column name Logo_ID
+     */
     public static final String COLUMNNAME_Logo_ID = "Logo_ID";
 
-    /** Set Logo	  */
-    public void setLogo_ID (int Logo_ID);
+    /**
+     * Set Logo
+     */
+    public void setLogo_ID(int Logo_ID);
 
-    /** Get Logo	  */
+    /**
+     * Get Logo
+     */
     public int getLogo_ID();
 
-    /** Column name M_DiscountSchema_ID */
+    /**
+     * Column name M_DiscountSchema_ID
+     */
     public static final String COLUMNNAME_M_DiscountSchema_ID = "M_DiscountSchema_ID";
 
-    /** Set Discount Schema.
+    /**
+     * Set Discount Schema.
      * Schema to calculate the trade discount percentage
      */
-    public void setM_DiscountSchema_ID (int M_DiscountSchema_ID);
+    public void setM_DiscountSchema_ID(int M_DiscountSchema_ID);
 
-    /** Get Discount Schema.
+    /**
+     * Get Discount Schema.
      * Schema to calculate the trade discount percentage
      */
     public int getM_DiscountSchema_ID();
 
 
-    /** Column name M_PriceList_ID */
+    /**
+     * Column name M_PriceList_ID
+     */
     public static final String COLUMNNAME_M_PriceList_ID = "M_PriceList_ID";
 
-    /** Set Price List.
+    /**
+     * Set Price List.
      * Unique identifier of a Price List
      */
-    public void setM_PriceList_ID (int M_PriceList_ID);
+    public void setM_PriceList_ID(int M_PriceList_ID);
 
-    /** Get Price List.
+    /**
+     * Get Price List.
      * Unique identifier of a Price List
      */
     public int getM_PriceList_ID();
 
 
-    /** Column name NAICS */
+    /**
+     * Column name NAICS
+     */
     public static final String COLUMNNAME_NAICS = "NAICS";
 
-    /** Set NAICS/SIC.
+    /**
+     * Set NAICS/SIC.
      * Standard Industry Code or its successor NAIC - http://www.osha.gov/oshstats/sicser.html
      */
-    public void setNAICS (String NAICS);
+    public void setNAICS(String NAICS);
 
-    /** Get NAICS/SIC.
+    /**
+     * Get NAICS/SIC.
      * Standard Industry Code or its successor NAIC - http://www.osha.gov/oshstats/sicser.html
      */
     public String getNAICS();
 
-    /** Column name Name */
+    /**
+     * Column name Name
+     */
     public static final String COLUMNNAME_Name = "Name";
 
-    /** Set Name.
+    /**
+     * Set Name.
      * Alphanumeric identifier of the entity
      */
-    public void setName (String Name);
+    public void setName(String Name);
 
-    /** Get Name.
+    /**
+     * Get Name.
      * Alphanumeric identifier of the entity
      */
     public String getName();
 
-    /** Column name Name2 */
+    /**
+     * Column name Name2
+     */
     public static final String COLUMNNAME_Name2 = "Name2";
 
-    /** Set Name 2.
+    /**
+     * Set Name 2.
      * Additional Name
      */
-    public void setName2 (String Name2);
+    public void setName2(String Name2);
 
-    /** Get Name 2.
+    /**
+     * Get Name 2.
      * Additional Name
      */
     public String getName2();
 
-    /** Column name NumberEmployees */
+    /**
+     * Column name NumberEmployees
+     */
     public static final String COLUMNNAME_NumberEmployees = "NumberEmployees";
 
-    /** Set Employees.
+    /**
+     * Set Employees.
      * Number of employees
      */
-    public void setNumberEmployees (int NumberEmployees);
+    public void setNumberEmployees(int NumberEmployees);
 
-    /** Get Employees.
+    /**
+     * Get Employees.
      * Number of employees
      */
     public int getNumberEmployees();
 
-    /** Column name PaymentRule */
+    /**
+     * Column name PaymentRule
+     */
     public static final String COLUMNNAME_PaymentRule = "PaymentRule";
 
-    /** Set Payment Rule.
+    /**
+     * Set Payment Rule.
      * How you pay the invoice
      */
-    public void setPaymentRule (String PaymentRule);
+    public void setPaymentRule(String PaymentRule);
 
-    /** Get Payment Rule.
+    /**
+     * Get Payment Rule.
      * How you pay the invoice
      */
     public String getPaymentRule();
 
-    /** Column name PaymentRulePO */
+    /**
+     * Column name PaymentRulePO
+     */
     public static final String COLUMNNAME_PaymentRulePO = "PaymentRulePO";
 
-    /** Set Payment Rule.
+    /**
+     * Set Payment Rule.
      * Purchase payment option
      */
-    public void setPaymentRulePO (String PaymentRulePO);
+    public void setPaymentRulePO(String PaymentRulePO);
 
-    /** Get Payment Rule.
+    /**
+     * Get Payment Rule.
      * Purchase payment option
      */
     public String getPaymentRulePO();
 
-    /** Column name PO_DiscountSchema_ID */
+    /**
+     * Column name PO_DiscountSchema_ID
+     */
     public static final String COLUMNNAME_PO_DiscountSchema_ID = "PO_DiscountSchema_ID";
 
-    /** Set PO Discount Schema.
+    /**
+     * Set PO Discount Schema.
      * Schema to calculate the purchase trade discount percentage
      */
-    public void setPO_DiscountSchema_ID (int PO_DiscountSchema_ID);
+    public void setPO_DiscountSchema_ID(int PO_DiscountSchema_ID);
 
-    /** Get PO Discount Schema.
+    /**
+     * Get PO Discount Schema.
      * Schema to calculate the purchase trade discount percentage
      */
     public int getPO_DiscountSchema_ID();
 
-    /** Column name PO_PaymentTerm_ID */
+    /**
+     * Column name PO_PaymentTerm_ID
+     */
     public static final String COLUMNNAME_PO_PaymentTerm_ID = "PO_PaymentTerm_ID";
 
-    /** Set PO Payment Term.
+    /**
+     * Set PO Payment Term.
      * Payment rules for a purchase order
      */
-    public void setPO_PaymentTerm_ID (int PO_PaymentTerm_ID);
+    public void setPO_PaymentTerm_ID(int PO_PaymentTerm_ID);
 
-    /** Get PO Payment Term.
+    /**
+     * Get PO Payment Term.
      * Payment rules for a purchase order
      */
     public int getPO_PaymentTerm_ID();
 
 
-    /** Column name PO_PriceList_ID */
+    /**
+     * Column name PO_PriceList_ID
+     */
     public static final String COLUMNNAME_PO_PriceList_ID = "PO_PriceList_ID";
 
-    /** Set Purchase Pricelist.
+    /**
+     * Set Purchase Pricelist.
      * Price List used by this Business Partner
      */
-    public void setPO_PriceList_ID (int PO_PriceList_ID);
+    public void setPO_PriceList_ID(int PO_PriceList_ID);
 
-    /** Get Purchase Pricelist.
+    /**
+     * Get Purchase Pricelist.
      * Price List used by this Business Partner
      */
     public int getPO_PriceList_ID();
 
 
-    /** Column name POReference */
+    /**
+     * Column name POReference
+     */
     public static final String COLUMNNAME_POReference = "POReference";
 
-    /** Set Order Reference.
+    /**
+     * Set Order Reference.
      * Transaction Reference Number (Sales Order, Purchase Order) of your Business Partner
      */
-    public void setPOReference (String POReference);
+    public void setPOReference(String POReference);
 
-    /** Get Order Reference.
+    /**
+     * Get Order Reference.
      * Transaction Reference Number (Sales Order, Purchase Order) of your Business Partner
      */
     public String getPOReference();
 
-    /** Column name PotentialLifeTimeValue */
+    /**
+     * Column name PotentialLifeTimeValue
+     */
     public static final String COLUMNNAME_PotentialLifeTimeValue = "PotentialLifeTimeValue";
 
-    /** Set Potential Life Time Value.
+    /**
+     * Set Potential Life Time Value.
      * Total Revenue expected
      */
-    public void setPotentialLifeTimeValue (BigDecimal PotentialLifeTimeValue);
+    public void setPotentialLifeTimeValue(BigDecimal PotentialLifeTimeValue);
 
-    /** Get Potential Life Time Value.
+    /**
+     * Get Potential Life Time Value.
      * Total Revenue expected
      */
     public BigDecimal getPotentialLifeTimeValue();
 
-    /** Column name Rating */
+    /**
+     * Column name Rating
+     */
     public static final String COLUMNNAME_Rating = "Rating";
 
-    /** Set Rating.
+    /**
+     * Set Rating.
      * Classification or Importance
      */
-    public void setRating (String Rating);
+    public void setRating(String Rating);
 
-    /** Get Rating.
+    /**
+     * Get Rating.
      * Classification or Importance
      */
     public String getRating();
 
-    /** Column name ReferenceNo */
+    /**
+     * Column name ReferenceNo
+     */
     public static final String COLUMNNAME_ReferenceNo = "ReferenceNo";
 
-    /** Set Reference No.
+    /**
+     * Set Reference No.
      * Your customer or vendor number at the Business Partner's site
      */
-    public void setReferenceNo (String ReferenceNo);
+    public void setReferenceNo(String ReferenceNo);
 
-    /** Get Reference No.
+    /**
+     * Get Reference No.
      * Your customer or vendor number at the Business Partner's site
      */
     public String getReferenceNo();
 
-    /** Column name SalesRep_ID */
+    /**
+     * Column name SalesRep_ID
+     */
     public static final String COLUMNNAME_SalesRep_ID = "SalesRep_ID";
 
-    /** Set Sales Representative.
+    /**
+     * Set Sales Representative.
      * Sales Representative or Company Agent
      */
-    public void setSalesRep_ID (int SalesRep_ID);
+    public void setSalesRep_ID(int SalesRep_ID);
 
-    /** Get Sales Representative.
+    /**
+     * Get Sales Representative.
      * Sales Representative or Company Agent
      */
     public int getSalesRep_ID();
 
 
-    /** Column name SalesVolume */
+    /**
+     * Column name SalesVolume
+     */
     public static final String COLUMNNAME_SalesVolume = "SalesVolume";
 
-    /** Set Sales Volume in 1.000.
+    /**
+     * Set Sales Volume in 1.000.
      * Total Volume of Sales in Thousands of Currency
      */
-    public void setSalesVolume (int SalesVolume);
+    public void setSalesVolume(int SalesVolume);
 
-    /** Get Sales Volume in 1.000.
+    /**
+     * Get Sales Volume in 1.000.
      * Total Volume of Sales in Thousands of Currency
      */
     public int getSalesVolume();
 
-    /** Column name SendEMail */
+    /**
+     * Column name SendEMail
+     */
     public static final String COLUMNNAME_SendEMail = "SendEMail";
 
-    /** Set Send EMail.
+    /**
+     * Set Send EMail.
      * Enable sending Document EMail
      */
-    public void setSendEMail (boolean SendEMail);
+    public void setSendEMail(boolean SendEMail);
 
-    /** Get Send EMail.
+    /**
+     * Get Send EMail.
      * Enable sending Document EMail
      */
     public boolean isSendEMail();
 
-    /** Column name ShareOfCustomer */
+    /**
+     * Column name ShareOfCustomer
+     */
     public static final String COLUMNNAME_ShareOfCustomer = "ShareOfCustomer";
 
-    /** Set Share.
+    /**
+     * Set Share.
      * Share of Customer's business as a percentage
      */
-    public void setShareOfCustomer (int ShareOfCustomer);
+    public void setShareOfCustomer(int ShareOfCustomer);
 
-    /** Get Share.
+    /**
+     * Get Share.
      * Share of Customer's business as a percentage
      */
     public int getShareOfCustomer();
 
-    /** Column name ShelfLifeMinPct */
+    /**
+     * Column name ShelfLifeMinPct
+     */
     public static final String COLUMNNAME_ShelfLifeMinPct = "ShelfLifeMinPct";
 
-    /** Set Min Shelf Life %.
+    /**
+     * Set Min Shelf Life %.
      * Minimum Shelf Life in percent based on Product Instance Guarantee Date
      */
-    public void setShelfLifeMinPct (int ShelfLifeMinPct);
+    public void setShelfLifeMinPct(int ShelfLifeMinPct);
 
-    /** Get Min Shelf Life %.
+    /**
+     * Get Min Shelf Life %.
      * Minimum Shelf Life in percent based on Product Instance Guarantee Date
      */
     public int getShelfLifeMinPct();
 
-    /** Column name SO_CreditLimit */
+    /**
+     * Column name SO_CreditLimit
+     */
     public static final String COLUMNNAME_SO_CreditLimit = "SO_CreditLimit";
 
-    /** Set Credit Limit.
+    /**
+     * Set Credit Limit.
      * Total outstanding invoice amounts allowed
      */
-    public void setSO_CreditLimit (BigDecimal SO_CreditLimit);
+    public void setSO_CreditLimit(double SO_CreditLimit);
 
-    /** Get Credit Limit.
+    /**
+     * Get Credit Limit.
      * Total outstanding invoice amounts allowed
      */
-    public BigDecimal getSO_CreditLimit();
+    public double getSO_CreditLimit();
 
-    /** Column name SOCreditStatus */
+    /**
+     * Column name SOCreditStatus
+     */
     public static final String COLUMNNAME_SOCreditStatus = "SOCreditStatus";
 
-    /** Set Credit Status.
+    /**
+     * Set Credit Status.
      * Business Partner Credit Status
      */
-    public void setSOCreditStatus (String SOCreditStatus);
+    public void setSOCreditStatus(String SOCreditStatus);
 
-    /** Get Credit Status.
+    /**
+     * Get Credit Status.
      * Business Partner Credit Status
      */
     public String getSOCreditStatus();
 
-    /** Column name SO_CreditUsed */
+    /**
+     * Column name SO_CreditUsed
+     */
     public static final String COLUMNNAME_SO_CreditUsed = "SO_CreditUsed";
 
-    /** Set Credit Used.
+    /**
+     * Set Credit Used.
      * Current open balance
      */
-    public void setSO_CreditUsed (BigDecimal SO_CreditUsed);
+    public void setSO_CreditUsed(double SO_CreditUsed);
 
-    /** Get Credit Used.
+    /**
+     * Get Credit Used.
      * Current open balance
      */
-    public BigDecimal getSO_CreditUsed();
+    public double getSO_CreditUsed();
 
-    /** Column name SO_Description */
+    /**
+     * Column name SO_Description
+     */
     public static final String COLUMNNAME_SO_Description = "SO_Description";
 
-    /** Set Order Description.
+    /**
+     * Set Order Description.
      * Description to be used on orders
      */
-    public void setSO_Description (String SO_Description);
+    public void setSO_Description(String SO_Description);
 
-    /** Get Order Description.
+    /**
+     * Get Order Description.
      * Description to be used on orders
      */
     public String getSO_Description();
 
-    /** Column name TaxID */
+    /**
+     * Column name TaxID
+     */
     public static final String COLUMNNAME_TaxID = "TaxID";
 
-    /** Set Tax ID.
+    /**
+     * Set Tax ID.
      * Tax Identification
      */
-    public void setTaxID (String TaxID);
+    public void setTaxID(String TaxID);
 
-    /** Get Tax ID.
+    /**
+     * Get Tax ID.
      * Tax Identification
      */
     public String getTaxID();
 
-    /** Column name TotalOpenBalance */
+    /**
+     * Column name TotalOpenBalance
+     */
     public static final String COLUMNNAME_TotalOpenBalance = "TotalOpenBalance";
 
-    /** Set Open Balance.
+    /**
+     * Set Open Balance.
      * Total Open Balance Amount in primary Accounting Currency
      */
-    public void setTotalOpenBalance (BigDecimal TotalOpenBalance);
+    public void setTotalOpenBalance(double TotalOpenBalance);
 
-    /** Get Open Balance.
+    /**
+     * Get Open Balance.
      * Total Open Balance Amount in primary Accounting Currency
      */
-    public BigDecimal getTotalOpenBalance();
+    public double getTotalOpenBalance();
 
-    /** Column name Updated */
+    /**
+     * Column name Updated
+     */
     public static final String COLUMNNAME_Updated = "Updated";
 
-    /** Get Updated.
+    /**
+     * Get Updated.
      * Date this record was updated
      */
     public Timestamp getUpdated();
 
-    /** Column name UpdatedBy */
+    /**
+     * Column name UpdatedBy
+     */
     public static final String COLUMNNAME_UpdatedBy = "UpdatedBy";
 
-    /** Get Updated By.
+    /**
+     * Get Updated By.
      * User who updated this records
      */
     public int getUpdatedBy();
 
-    /** Column name URL */
+    /**
+     * Column name URL
+     */
     public static final String COLUMNNAME_URL = "URL";
 
-    /** Set URL.
+    /**
+     * Set URL.
      * Full URL address - e.g. http://www.idempiere.org
      */
-    public void setURL (String URL);
+    public void setURL(String URL);
 
-    /** Get URL.
+    /**
+     * Get URL.
      * Full URL address - e.g. http://www.idempiere.org
      */
     public String getURL();
 
-    /** Column name Value */
+    /**
+     * Column name Value
+     */
     public static final String COLUMNNAME_Value = "Value";
 
-    /** Set Search Key.
+    /**
+     * Set Search Key.
      * Search key for the record in the format required - must be unique
      */
-    public void setValue (String Value);
+    public void setValue(String Value);
 
-    /** Get Search Key.
+    /**
+     * Get Search Key.
      * Search key for the record in the format required - must be unique
      */
     public String getValue();
 
+    static String tableCreationSQL = "CREATE TABLE C_BPartner ( "
+            + COLUMNNAME_AD_Client_ID + " INTEGER, "
+            + COLUMNNAME_AD_Org_ID + " INTEGER, "
+            + COLUMNNAME_C_BPartner_ID + " INTEGER PRIMARY KEY , "
+            + COLUMNNAME_C_BP_Group_ID + " INTEGER, "
+            + COLUMNNAME_C_PaymentTerm_ID + " INTEGER, "
+            + COLUMNNAME_C_TaxGroup_ID + " INTEGER, "
+            + COLUMNNAME_Created + " TEXT, "
+            + COLUMNNAME_CreatedBy + " INTEGER, "
+            + COLUMNNAME_DeliveryRule + " TEXT, "
+            + COLUMNNAME_DeliveryViaRule + " TEXT, "
+            + COLUMNNAME_Description + " TEXT, "
+            + COLUMNNAME_InvoiceRule + " TEXT, "
+            + COLUMNNAME_IsActive + " TEXT, "
+            + COLUMNNAME_IsCustomer + " TEXT, "
+            + COLUMNNAME_IsVendor + " TEXT, "
+            + COLUMNNAME_Value + " TEXT, "
+            + COLUMNNAME_IsSalesRep + " TEXT, "
+            + COLUMNNAME_IsTaxExempt + " TEXT, "
+            + COLUMNNAME_TotalOpenBalance + " NUMERIC, "
+            + COLUMNNAME_Updated + " TEXT, "
+            + COLUMNNAME_UpdatedBy + " INTEGER , "
+            + COLUMNNAME_TaxID + " INTEGER, "
+            + COLUMNNAME_SOCreditStatus + " TEXT, "
+            + COLUMNNAME_SO_CreditUsed + " NUMERIC, "
+            + COLUMNNAME_SO_CreditLimit + " NUMERIC, "
+            + COLUMNNAME_SalesRep_ID + " INTEGER, "
+            + COLUMNNAME_Name + " TEXT, "
+            + COLUMNNAME_Name2 + " TEXT, "
+            + COLUMNNAME_M_PriceList_ID + " INTEGER "
+            + " ); ";
+
+    static String tableDeletionSQL = "DROP TABLE IF EXISTS " + Table_Name;
 }

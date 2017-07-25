@@ -64,4 +64,14 @@ public class DBQuery {
         }
         return database.getUpdateableDatabase().delete(tableName, whereClause, null);
     }
+
+    public static String getSql() {
+        return sql;
+    }
+
+    public static void setSql(String sql) {
+        DBQuery.sql = sql;
+    }
+
+
 }

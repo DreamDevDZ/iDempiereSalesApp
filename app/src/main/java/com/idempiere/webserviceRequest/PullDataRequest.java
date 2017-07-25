@@ -4,7 +4,7 @@ package com.idempiere.webserviceRequest;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.idempiere.model.X_Action;
+import com.idempiere.model.DBObject;
 import com.idempiere.utils.DBUtils;
 import com.idempiere.utils.WSRUtils;
 import com.idempiere.webservice.X_ADLoginRequest;
@@ -19,7 +19,7 @@ import com.idempiere.webserviceresponse.JSONResponseParser;
  * @created 8/7/17
  * @usage Method used to pull all query information from the system
  */
-public class PullDataRequest extends AsyncTask<Void, Void, X_RunProcessResponse> {
+public class PullDataRequest extends AsyncTask<DBObject, Void, X_RunProcessResponse> {
 
     private WebServiceRequest wsr;
     private int SMA_App_Table_ID;
@@ -27,18 +27,20 @@ public class PullDataRequest extends AsyncTask<Void, Void, X_RunProcessResponse>
     private X_ADLoginRequest loginRequest;
     private int AD_User_ID;
 
+
     @Override
-    protected X_RunProcessResponse doInBackground(Void... params) {
+    protected X_RunProcessResponse doInBackground(DBObject... params) {
         X_RunProcessResponse response = runRequest();
         if (response.Error != null){
             Log.v("PullDataError", response.Error);
         }
         if (response.Summary != null){
             Log.v("PullDataSummary", response.Summary);
-            JSONResponseParser.parseProcessResponseToModel(new X_Action(), response);
+            JSONResponseParser.parseProcessResponseToModel(params[0], response);
         }
         return response;
     }
+
 
     public PullDataRequest(int SMA_App_Table_ID){
         this.SMA_App_Table_ID = SMA_App_Table_ID;
@@ -62,7 +64,5 @@ public class PullDataRequest extends AsyncTask<Void, Void, X_RunProcessResponse>
                                     WSRUtils.createLoginRequest(null, null));
         return wsr.runProcess();
     }
-
-
 
 }
